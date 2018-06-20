@@ -103,7 +103,7 @@ a {
 .post__info {
 	margin-bottom: 20px;
 	display: grid;
-	grid-template-columns: 200px auto min(240 auto);
+	grid-template-columns: 200px auto mix(240px, auto);
 	grid-template-areas: "social source data data";
 	color: var(--text-dark);
 } 
@@ -115,17 +115,27 @@ a {
 	grid-area: content;
 	display: grid;
 	grid-column-gap: 50px;
-	grid-template-columns: minmax(200px, 800px) 280px;
+	grid-template-columns: minmax(300px, 900px) 280px;
 	grid-template-areas: "content-content content-right";
 	justify-content: center;
 	background: var(--bg-dark);
 }
 
+.posts {
+	grid-area: content-content;
+}
+
 .content-right{
 	grid-area: content-right;
 	background: red;
+	height: 500px;
 }
+.post__line {
+	height: 1px;
+	background-color: var(--text-dark);
+	margin-bottom: 20px;
 
+}
 .footer {
 	grid-area: footer;
 	background: var(--bg-light);
