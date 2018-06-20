@@ -1,0 +1,145 @@
+:root {
+	--bg-dark: #090812;
+	--bg-light: #f6f1f0;
+	--secondary-color: #d76653;
+	--posts-width: 780px;
+	--text-light: #ccd4db;
+	--text-dark: #949494;
+	--underline-color: #00ff78;i
+
+}
+
+/*------------------ RESET CSS ------------------*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*------------------ CSS ------------------*/
+
+body {
+	font-family: "Lucida Grande", "Helvetica", sans-serif;
+	line-height: 1.8;
+	font-size: 14px;
+	color: var(--text-light);
+	background: var(--bg-light);
+}
+
+a {
+	text-decoration: none;
+	color: var(--secondary-color);
+}
+
+.wrapper {
+	display: grid;
+	grid-template-columns: minmax(20px, 50px) auto minmax(20px, 50px);
+	grid-template-rows: 50px auto 400px;
+	grid-template-areas:
+	"left top right"
+	"left content right"
+	"left footer right";
+	min-height: 100vh;
+}
+
+.top {
+	grid-area: top;
+	background: var(--bg-light);
+}
+
+.post__header {
+	font-size: 40px;
+	font-family: "IBM Plex Sans";
+	line-height: 45px;
+	margin-bottom: 20px;
+}
+
+.post__body {
+	font-size: 13px;
+	line-height: 20px;
+	font-family: "Geneva";
+	margin-bottom: 20px;
+	color: var(--text-dark);
+
+}
+
+.post__info {
+	margin-bottom: 20px;
+	display: grid;
+	grid-template-columns: 200px auto min(240 auto);
+	grid-template-areas: "social source data data";
+	color: var(--text-dark);
+} 
+
+
+
+.content {
+	padding: 50px;
+	grid-area: content;
+	display: grid;
+	grid-column-gap: 50px;
+	grid-template-columns: minmax(200px, 800px) 280px;
+	grid-template-areas: "content-content content-right";
+	justify-content: center;
+	background: var(--bg-dark);
+}
+
+.content-right{
+	grid-area: content-right;
+	background: red;
+}
+
+.footer {
+	grid-area: footer;
+	background: var(--bg-light);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

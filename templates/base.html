@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}DataHub - All the data.{% endblock title %}</title>
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'img/fav.ico' }" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="x-apple-disable-message-reformatting" />
+	<meta name="referrer" content="origin">
+	<meta http-equiv="Content-Language" content="en-us">
+	<meta name="google" value="notranslate">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta http-equiv="cleartype" content="on">
+	<meta name="HandheldFriendly" content="true">
+	<meta name='robots' content='index,follow'>
+	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+	<!-- bing seo -->
+	<meta name="geo.placename" content="United States" />
+	<meta name="geo.position" content="x;x" />
+	<meta name="geo.region" content="usa" />
+	<meta name="ICBM" content="x,x" />
+
+	{% block meta %}{% endblock meta %}
+
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	<link rel="stylesheet" href="{% static 'css/styles-mobile.css' %}">
+
+	<!-- analytics goes here -->
+
+</head>
+
+
+<body>
+
+<div class="wrapper">
+	<header class="top">
+		<div class="top__logo">DATAHUB</div>
+
+	</header>
+	
+	<div class="content">
+		<div class="posts">
+			<div class="post">
+				<div class="post__header">Computer Scientists Are Astir After Baidu Team Is Barred From A.I. Competition</div>
+				<div class="post__body">SAN FRANCISCO — A group of researchers at the Chinese web services company Baidu have been barred from participating in an international competition for artificial intelligence technology after organizers discovered that the Baidu scientists broke the contest’s rules.</div>
+				<div class="post__info">
+					<div class="post__info__social"><> <> <> <></div>
+					<div class="post__info__source">www.freeline.pl</div>
+					
+					<div class="date"><div class="comments">Comments (1)</div>2018-05-23 10:50:27</div>
+				</div>
+		<div class="content-right">
+			<div class="content-right__adv">adv</div>
+		</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="footer">
+		Copyright
+	</div>
+</div>
+
+</body>
+</html>
