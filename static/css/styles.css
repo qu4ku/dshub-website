@@ -103,10 +103,48 @@ a {
 .post__info {
 	margin-bottom: 20px;
 	display: grid;
-	grid-template-columns: 200px auto mix(240px, auto);
-	grid-template-areas: "social source data data";
+	grid-template-columns: 143px auto 240px;
+	grid-template-areas: "social source date";
 	color: var(--text-dark);
+	text-transform: uppercase;
+	font-size: 12px;
+	grid-column-gap: 10px;
+
 } 
+
+.post__info__social {
+	grid-area: social;
+	justify-self: start;
+	transform: translateY(3px);
+}
+
+.post__info__source {
+	grid-area: source;
+	align-self: center;
+	color: var(--secondary-color);
+	/*background-color: red;*/
+
+
+	
+}
+
+.post__info__date{
+	grid-area: date;
+	justify-self: end;
+	align-self: center;
+}
+
+.social-icon {
+	height: 32px;
+	width: 32px;
+	/*margin-right: 5px;*/
+}
+
+.comments span {
+	color: var(--secondary-color);
+
+}
+
 
 
 
@@ -120,6 +158,7 @@ a {
 	justify-content: center;
 	background: var(--bg-dark);
 }
+
 img {
 	height: 100px;
 	width: 100px;
@@ -130,9 +169,11 @@ img {
 
 .content-right{
 	grid-area: content-right;
-	background: red;
+	/*background: red;*/
 	/*height: 500px;*/
 }
+
+
 
 .content-right__adv {
 	/*background: yellow;*/
@@ -141,13 +182,13 @@ img {
 }
 
 .content-right__adv img {
-	width: 100%;
-	height: 100%;
+	width: 280px;
+	height: 700px;
 }
 
 .post__line {
 	height: 1px;
-	background-color: var(--text-dark);
+	background-color: #373737;
 	margin-bottom: 20px;
 
 }
