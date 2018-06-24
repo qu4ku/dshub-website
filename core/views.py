@@ -6,3 +6,10 @@ def home_view(request):
 	context = {}
 
 	return render(request, template, context)
+
+
+def about_view(request):
+	template = 'about.html'
+	context = {}
+
+	return render(request, template, context)

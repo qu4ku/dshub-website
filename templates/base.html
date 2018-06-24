@@ -42,8 +42,15 @@
 
 <div class="wrapper">
 	<header class="top">
-		<div class="top__logo">DATAHUB</div>
+		<div class="top__slogan">All the data you need.</div>
+		<a class="top__logo" href="#"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+		<nav class="top__nav">
 
+			<ul class="web-nav">
+				<li><a href="{% url 'about' %}">About</a></li>
+			</ul>
+		</nav>
+		
 	</header>
 	
 	<div class="content">
@@ -119,9 +126,23 @@
 
 
 	
-	<div class="footer">
-		Copyright
-	</div>
+	<footer class="footer">
+
+			<img src="{% static 'img/footer-eye.png' %}"" alt="" class="footer-img">
+			<div class="footer-text">
+				©<br>
+				DataHub.<br>
+				All rights reserved.<br>
+				2018
+			</div>
+			<div class="footer__links">
+				<a href="{% url 'about' %}">About</a>
+				<a href="mailto:datahub@gmail.com">Contact</a>
+				
+
+			</div>
+		</footer>
+
 
 
 </body>

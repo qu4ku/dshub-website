@@ -71,7 +71,7 @@ a {
 .wrapper {
 	display: grid;
 	grid-template-columns: minmax(20px, 50px) auto minmax(20px, 50px);
-	grid-template-rows: 50px auto 400px;
+	grid-template-rows: 50px auto auto;
 	grid-template-areas:
 	"left top right"
 	"left content right"
@@ -81,8 +81,43 @@ a {
 
 .top {
 	grid-area: top;
+	display: grid;
+	grid-template-columns: 1fr 190px 1fr;
+	grid-template-rows: 50px;
+	grid-template-areas: "slogan logo nav";
 	background: var(--bg-light);
+	align-items: center;
 }
+
+.top__logo {
+	grid-area: logo;
+	align-items: center;
+}
+
+.top__slogan {
+	color: black;
+}
+
+.top__logo img {
+	width: 188px;
+	height: 44px;
+	margin-top: 6px;
+}
+
+.top__nav {
+	grid-area: nav;
+	justify-self: right;
+	align-self: center;
+	color: black;
+	/*background-color: red;*/
+}
+
+/*.top_nav ul {
+	display: inline-block;
+}*/
+
+
+
 
 .post__header {
 	font-size: 40px;
@@ -157,12 +192,10 @@ a {
 	grid-template-areas: "content-content content-right";
 	justify-content: center;
 	background: var(--bg-dark);
+	margin-bottom: 50px;
 }
 
-img {
-	height: 100px;
-	width: 100px;
-}
+
 .posts {
 	grid-area: content-content;
 }
@@ -182,8 +215,8 @@ img {
 }
 
 .content-right__adv img {
-	width: 280px;
-	height: 700px;
+	/*width: 280px;*/
+	/*height: 700px;*/
 }
 
 .post__line {
@@ -192,11 +225,56 @@ img {
 	margin-bottom: 20px;
 
 }
+
+
+/*------------------ FOOTER ------------------*/
+
 .footer {
-	grid-area: footer;
 	background: var(--bg-light);
+	grid-area: footer;
+	display: grid;
+	grid-auto-flow: row;
+	align-self: end;
+	height: 200px;
+	justify-content: center;
+	width: 100%;
+	margin-bottom: 20px;
+	color: var(--bg-dark);
 }
 
+.footer-text {
+	margin: 20px 0 20px 0;
+	font-size: 12px;
+	line-height: 18px;
+	text-align: center;
+}
+
+.footer img {
+	justify-self: center;
+	transform: translateX(-5px);
+}
+
+.footer__links {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.footer__links a {
+	text-decoration: underline;
+	font-size: 10px;
+	margin: 0 4px;
+}
+
+.footer__links a:after {
+    content: "|";
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.footer__links a:last-child:after {
+	margin-left: 0;
+	content: "";
+}
 
 
 
