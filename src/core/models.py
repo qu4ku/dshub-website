@@ -16,6 +16,8 @@ class Feed(models.Model):
 	updated = models.DateTimeField(auto_now=True)
 
 	is_active = models.BooleanField(default=True)
+	# Switch off parsing content if feed has wrong format.
+	parse_content = models.BooleanField(default=True)
 
 	class Meta:
 		verbose_name = 'Feed'
@@ -81,12 +83,12 @@ class Post(models.Model):
 		verbose_name = 'Post'
 		verbose_name_plural = 'Posts'
 		db_table = 'post'
-		ordering = ('-date', )
+		ordering = ('-date',)
 		get_latest_by = 'date'
 
 	def __str__(self):
-		# return '{} | {}'.format(self.feed.title, self.title)
-		return self.title
+		return '{} | {}'.format(self.feed.title, self.title)
+		# return self.title
 
 
 

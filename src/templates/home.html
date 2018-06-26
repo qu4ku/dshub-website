@@ -1,30 +1,32 @@
 {% extends 'base.html' %}
 {% load static %}
 
-	{% block content %}
+{% block content %}		
 
-		<div class="posts">
-			
-			{% for post in posts %}
-			<div class="post"> <!-- post-start -->
-				<a href="{{ post.source_url }}" target="_blank"><div class="post__header">{{ post.title }}</div></a>
-				<div class="post__body">{{ post.content }}</div>
-				<div class="post__info">
-					<div class="post__info__social"> 
-						<img class="social-icon" src="{% static 'img/icons/fb.png' %}" alt="icon">
-						<img class="social-icon" src="{% static 'img/icons/tw.png' %}" alt="icon">
-						<img class="social-icon" src="{% static 'img/icons/ln.png' %}" alt="icon">
-						<img class="social-icon" src="{% static 'img/icons/link.png' %}" alt="icon">
-					</div>
-					<div class="post__info__source">{{ post.feed.url_display }}</div>
-					<div class="post__info__date">
-						<div class="comments">Comments (<span>1</span>)  {{ post.date }}</div>
-					</div>
-				</div>
-				<div class="post__line"></div>
-			</div> <!-- end-post -->
-			{% endfor %}
+<div class="posts">
+	
+	{% for post in posts %}
+	<div class="post"> <!-- post-start -->
+		<a href="{{ post.source_url }}" target="_blank"><div class="post__header">{{ post.title }}</div></a>
+		<div class="post__body">{{ post.content }}</div>
+		<div class="post__info">
+			<div class="post__info__social"> 
+				<img class="social-icon" src="{% static 'img/icons/fb.png' %}" alt="icon">
+				<img class="social-icon" src="{% static 'img/icons/tw.png' %}" alt="icon">
+				<img class="social-icon" src="{% static 'img/icons/ln.png' %}" alt="icon">
+				<img class="social-icon" src="{% static 'img/icons/link.png' %}" alt="icon">
+			</div>
+			<div class="post__info__source">{{ post.feed.url_display }}</div>
+			<div class="post__info__date">
+				<div>{{ post.date }}</div>
+			</div>
+		</div>
+		<div class="post__line"></div>
+	</div> <!-- end-post -->
+	{% endfor %}
 
-			{% include "includes/pagination.html" %}
+{% include "includes/pagination.html" %}
+</div> 
+
 			
 {% endblock content %}

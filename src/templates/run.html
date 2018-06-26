@@ -1,11 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	<h1>{{ title }}</h1>
-	
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}		
+
+<div class="posts">
+	{% if new_posts %}
+		{% for post in new_posts %}
+		<div class="post"> <!-- post-start -->
+			<a href="{{ post.source_url }}" target="_blank"><div class="post__header">{{ post.title }}</div></a>
+			<div class="post__body">{{ post.content }}</div>
+			<div class="post__info">
+				<div class="post__info__social"> 
+					<img class="social-icon" src="{% static 'img/icons/fb.png' %}" alt="icon">
+					<img class="social-icon" src="{% static 'img/icons/tw.png' %}" alt="icon">
+					<img class="social-icon" src="{% static 'img/icons/ln.png' %}" alt="icon">
+					<img class="social-icon" src="{% static 'img/icons/link.png' %}" alt="icon">
+				</div>
+				<div class="post__info__source">{{ post.feed.url_display }}</div>
+				<div class="post__info__date">
+					<div>{{ post.date }}</div>
+				</div>
+			</div>
+			<div class="post__line"></div>
+		</div> <!-- end-post -->
+		{% endfor %}
+	{% else %}
+		<h1>No new posts</h1>
+	{% endif %}
+
+{% include "includes/pagination.html" %}
+</div> 
+
+			
+{% endblock content %}
