@@ -54,65 +54,9 @@
 	</header>
 	
 	<div class="content">
-
-		<div class="posts">
-			
-
-			<div class="post"> <!-- post-start -->
-				<div class="post__header">Computer Scientists Are Astir After Baidu Team Is Barred From A.I. Competition</div>
-				<div class="post__body">SAN FRANCISCO — A group of researchers at the Chinese web services company Baidu have been barred from participating in an international competition for artificial intelligence technology after organizers discovered that the Baidu scientists broke the contest’s rules.</div>
-				<div class="post__info">
-					<div class="post__info__social"> 
-						<img class="social-icon" src="{% static 'img/icons/fb.png' %}" alt="icon">
-						<img class="social-icon" src="{% static 'img/icons/tw.png' %}" alt="icon">
-						<img class="social-icon" src="{% static 'img/icons/ln.png' %}" alt="icon">
-						<img class="social-icon" src="{% static 'img/icons/link.png' %}" alt="icon">
-					</div>
-					<div class="post__info__source">www.freeline.pl</div>
-					<div class="post__info__date">
-						<div class="comments">Comments (<span>1</span>)  2018-05-23 10:50:27</div>
-					</div>
-				</div>
-				<div class="post__line"></div>
-			</div> <!-- end-post -->
-
-			<div class="post"> <!-- post-start -->
-				<div class="post__header">Computer Scientists Are Astir After Baidu Team Is Barred From A.I. Competition</div>
-				<div class="post__body">SAN FRANCISCO — A group of researchers at the Chinese web services company Baidu have been barred from participating in an international competition for artificial intelligence technology after organizers discovered that the Baidu scientists broke the contest’s rules.</div>
-				<div class="post__info">
-					<div class="post__info__social"> 
-						<img class="social-icon" src="{% static 'img/icons/fb.png' %}" alt="icon">
-						<img class="social-icon" src="{% static 'img/icons/tw.png' %}" alt="icon">
-						<img class="social-icon" src="{% static 'img/icons/ln.png' %}" alt="icon">
-						<img class="social-icon" src="{% static 'img/icons/link.png' %}" alt="icon">
-					</div>
-					<div class="post__info__source">www.freeline.pl</div>
-					<div class="post__info__date">
-						<div class="comments">Comments (<span>1</span>)  2018-05-23 10:50:27</div>
-					</div>
-				</div>
-				<div class="post__line"></div>
-			</div> <!-- end-post -->
-
-			<div class="post"> <!-- post-start -->
-				<div class="post__header">Computer Scientists Are Astir After Baidu Team Is Barred From A.I. Competition</div>
-				<div class="post__body">SAN FRANCISCO — A group of researchers at the Chinese web services company Baidu have been barred from participating in an international competition for artificial intelligence technology after organizers discovered that the Baidu scientists broke the contest’s rules.</div>
-				<div class="post__info">
-					<div class="post__info__social"> 
-						<img class="social-icon" src="{% static 'img/icons/fb.png' %}" alt="icon">
-						<img class="social-icon" src="{% static 'img/icons/tw.png' %}" alt="icon">
-						<img class="social-icon" src="{% static 'img/icons/ln.png' %}" alt="icon">
-						<img class="social-icon" src="{% static 'img/icons/link.png' %}" alt="icon">
-					</div>
-					<div class="post__info__source">www.freeline.pl</div>
-					<div class="post__info__date">
-						<div class="comments">Comments (<span>1</span>)  2018-05-23 10:50:27</div>
-					</div>
-				</div>
-				<div class="post__line"></div>
-			</div> <!-- end-post -->
-
-		</div> 
+		{% block content %}
+		{% endblock content %}
+	</div> 
 
 
 
@@ -139,7 +83,6 @@
 				<a href="{% url 'about' %}">About</a>
 				<a href="mailto:datahub@gmail.com">Contact</a>
 				
-
 			</div>
 		</footer>
 

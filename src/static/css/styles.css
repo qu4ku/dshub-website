@@ -68,6 +68,8 @@ a {
 	color: var(--secondary-color);
 }
 
+
+
 .wrapper {
 	display: grid;
 	grid-template-columns: minmax(20px, 50px) auto minmax(20px, 50px);
@@ -117,13 +119,17 @@ a {
 }*/
 
 
-
+/*.post a {
+	color: grey;
+	color: var;
+}*/
 
 .post__header {
 	font-size: 40px;
 	font-family: "IBM Plex Sans";
 	line-height: 45px;
 	margin-bottom: 20px;
+	color: var(--text-light);
 }
 
 .post__body {

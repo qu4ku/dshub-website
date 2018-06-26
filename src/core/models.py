@@ -71,10 +71,6 @@ class Post(models.Model):
 		help_text="When this post says it was published.",
 	)
 
-	feed_url = models.URLField(
-		max_length=250,
-		help_text="URL to the source of the post.",
-	)
 
 	is_active = models.BooleanField(default=True)
 	guid = models.CharField(max_length=32)
@@ -89,7 +85,8 @@ class Post(models.Model):
 		get_latest_by = 'date'
 
 	def __str__(self):
-		return '{} | {}'.format(self.feed.title, self.title)
+		# return '{} | {}'.format(self.feed.title, self.title)
+		return self.title
 
 
 
