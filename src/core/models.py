@@ -31,7 +31,7 @@ class Feed(models.Model):
 
 class Tag(models.Model):
 
-	title = models.CharField(max_length=100)
+	title = models.CharField(max_length=100, blank=True)
 	slug = models.SlugField(unique=True)
 	description = models.TextField(null=True, blank=True)
 	seo_title = models.CharField(max_length=60, blank=True, null=True)
@@ -48,7 +48,25 @@ class Tag(models.Model):
 	def __str__(self):
 		return self.title
 
+class OtherTag(models.Model):
+	"""Tags that are not already in the database"""
 
+	title = models.CharField(max_length=100, blank=True)
+	slug = models.SlugField(unique=True)
+	description = models.TextField(null=True, blank=True)
+	seo_title = models.CharField(max_length=60, blank=True, null=True)
+	seo_description = models.CharField(max_length=165, blank=True, null=True)
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+
+	class Meta:
+		verbose_name = 'Other Tag'
+		verbose_name_plural = 'Other Tags'
+		db_table = 'other_tag'
+		ordering = ('title',)
+
+	def __str__(self):
+		return self.slug
 
 class Post(models.Model):
 
@@ -78,7 +96,7 @@ class Post(models.Model):
 	guid = models.CharField(max_length=32)
 
 	tags = models.ManyToManyField(Tag, blank=True)
-
+	other_tags = models.ManyToManyField(OtherTag, blank=True)
 	class Meta:
 		verbose_name = 'Post'
 		verbose_name_plural = 'Posts'
@@ -88,7 +106,6 @@ class Post(models.Model):
 
 	def __str__(self):
 		return '{} | {}'.format(self.feed.title, self.title)
-		# return self.title
 
 
 
