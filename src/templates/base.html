@@ -44,11 +44,12 @@
 
 <div class="wrapper">
 	<header class="top">
-		<div class="top__slogan">All the data you need.</div>
-		<a class="top__logo" href="#"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+		<div class="top__slogan">All the data you ever need.</div>
+		<a class="top__logo" href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
 		<nav class="top__nav">
 
 			<ul class="web-nav">
+				<li><a href="{% url 'tags_list' %}">Tags</a></li>
 				<li><a href="{% url 'about' %}">About</a></li>
 			</ul>
 		</nav>
@@ -65,7 +66,6 @@
 				<img src="{% static 'img/adv10.jpg' %}" alt="">
 			</div>
 			{% block right %}
-			kamil
 			{% endblock right %}
 		</div>
 	</div>
@@ -88,7 +88,6 @@
 			<div class="footer__social">
 				<a href="https://twitter.com/qu4ku">Facebook</a>
 				<a href="https://twitter.com/qu4ku">Twitter</a>
-
 			</div>
 		</footer>
 

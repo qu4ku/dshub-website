@@ -119,6 +119,17 @@ a {
 
 .top__nav ul li a {
 	color: black;
+	font-family: 'Roboto Mono', monospace;
+}
+
+.top__nav ul li a:hover {
+	color: red;
+}
+
+.web-nav li {
+	display: inline-block;
+	margin-left: 5px;
+
 }
 
 /*.top_nav ul {
@@ -313,15 +324,18 @@ a {
 	writing-mode: vertical-rl;
 	position:fixed;
 	right: 14px;
-	bottom: 14px;
+	/*bottom: 14px;*/
+	top: 50%;
+	margin-top: -70px;
 	color: black;
 	font-size: 12px;
-	bottom: ;
+	/*bottom: ;*/
 }
 
 .footer__social a {
 	color: black;
 	margin-top: 20px;
+	letter-spacing: 1px;
 }
 
 

@@ -40,6 +40,8 @@ def home_view(request):
 	for tag in tags:
 		print(tag.slug, tag.post_set.count())
 		tag_num.append((tag.slug, tag.post_set.count()))
+	# Skip don't used tags
+	tag_num = [tag for tag in tag_num if tag[1] > 0]
 	tag_num_sorted = sorted(tag_num, key=lambda x: x[1], reverse=True)
 
 	# Top ten tags
@@ -67,10 +69,29 @@ def tags_list_view(request):
 	for tag in tags:
 		print(tag.slug, tag.post_set.count())
 		tag_num.append((tag.slug, tag.post_set.count()))
+	tag_num = [tag for tag in tag_num if tag[1] > 0]
 	tag_num_sorted = sorted(tag_num, key=lambda x: x[1], reverse=True)
 	template = 'tags.html'
 	context = {'tags': tag_num_sorted,}
 	return render(request, template, context)
+
+def other_tags_list_view(request):
+	# Generate tag, number of post by tag pair and then sort it.
+	tags = OtherTag.objects.all()
+
+	tag_num = []
+	for tag in tags:
+		print(tag.slug, tag.post_set.count())
+		tag_num.append((tag.slug, tag.post_set.count()))
+	# tag_num = [tag for tag in tag_num if tag[1] > 0]
+	tag_num_sorted = sorted(tag_num, key=lambda x: x[1], reverse=True)
+	template = 'tags.html'
+	context = {'tags': tag_num_sorted,}
+	return render(request, template, context)
+
+
+
+
 
 def tag_view(request, slug):
 	tag = get_object_or_404(Tag, slug=slug)
@@ -93,7 +114,9 @@ def normalize_tag(tag):
 	# Fix for HTML entities
 	tag = BeautifulSoup(tag, 'html.parser').prettify()
 	tag = tag.strip().lower()
+	tag = tag.replace(',' '')
 	tag = tag.replace(' ', '-')
+
 	return tag
 
 def normalize_content(content):
