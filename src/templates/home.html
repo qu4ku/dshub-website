@@ -25,16 +25,11 @@
 	</div> <!-- end-post -->
 	{% endfor %}
 
-	{% include "includes/pagination.html" %}
+	{% include 'includes/pagination.html' %}
 </div>
 		
 {% endblock content %}
 
 {% block right %}
-<div class="content-right__tags">
-	<h3 class="content-right__header">Top Tags</h3>
-	{% for tag in tags %}
-		<a class="button-tag button-tag-home" href="{% url 'tag' slug=tag.0 %}">{{ tag.0 }}<span>{{ tag.1 }}</span></a>
-	{% endfor %}
-</div>
+	{% include 'includes/content-right-tags.html' %}
 {% endblock right %}

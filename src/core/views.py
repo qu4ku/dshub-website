@@ -43,7 +43,7 @@ def home_view(request):
 	tag_num_sorted = sorted(tag_num, key=lambda x: x[1], reverse=True)
 
 	# Top ten tags
-	top_tags = tag_num_sorted[:10]
+	top_tags = tag_num_sorted[:20]
 
 	template = 'home.html'
 	context = {
