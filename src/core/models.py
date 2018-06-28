@@ -5,7 +5,11 @@ class Feed(models.Model):
 
 	title = models.CharField(max_length=100)
 	slug = models.SlugField(unique=True)
+	# URL to the website
 	url = models.URLField(max_length=250)
+	# URL to the feed
+	url_feed = models.URLField(max_length=250)
+	# URL in human friendly format
 	url_display = models.CharField(max_length=250)
 
 	author = models.CharField(max_length=100, blank=True)
