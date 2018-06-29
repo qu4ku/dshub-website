@@ -98,6 +98,7 @@ class Post(models.Model):
 
 	is_active = models.BooleanField(default=True)
 	guid = models.CharField(max_length=32)
+	slug = models.SlugField(max_length=280)
 
 	tags = models.ManyToManyField(Tag, blank=True)
 	other_tags = models.ManyToManyField(OtherTag, blank=True)

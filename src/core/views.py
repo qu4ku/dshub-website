@@ -3,6 +3,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils.dateparse import parse_date
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from django.utils.text import slugify
 from .models import Post, Feed, Tag, OtherTag
 from datetime import datetime
 import time
@@ -114,7 +115,7 @@ def normalize_tag(tag):
 	# Fix for HTML entities
 	tag = BeautifulSoup(tag, 'html.parser').prettify()
 	tag = tag.strip().lower()
-	tag = tag.replace(',' '')
+	tag = slugify(tag)
 	tag = tag.replace(' ', '-')
 
 	return tag
@@ -142,8 +143,8 @@ def run_view(request):
 	other_tags = []
 	for other_tag_obj in other_tag_objs:
 		other_tags.append(other_tag_obj.slug)
-	print(tags)
-	print(other_tags)
+	# print(tags)
+	# print(other_tags)
 
 	# Get list of feed objects
 	feeds = Feed.objects.all()
@@ -170,6 +171,8 @@ def run_view(request):
 			content = article.get('description') or article.get(
 				'content', [{'value': ''}])[0]['value']
 			content = normalize_content(content)
+
+			slug = slugify(title)
 
 			try:
 				new_guid = unicode(md5(article.get("link")).hexdigest())
@@ -214,6 +217,7 @@ def run_view(request):
 					source_url=source_url,
 					content=content,
 					guid=new_guid,
+					slug=slug,
 				)
 				post.save()
 				post.tags.add(*tags_to_add)
