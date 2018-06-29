@@ -33,7 +33,7 @@
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
 
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"> -->
 
 	<!-- analytics goes here -->
 
@@ -62,11 +62,9 @@
 	
 
 		<div class="content-right">
-			<div class="content-right__adv">
-				<img src="{% static 'img/adv10.jpg' %}" alt="">
-			</div>
-			{% block right %}
-			{% endblock right %}
+			
+			{% block content-right %}
+			{% endblock content-right %}
 		</div>
 	</div>
 
@@ -83,6 +81,7 @@
 			</div>
 			<div class="footer__links">
 				<a href="{% url 'about' %}">About</a>
+				<a href="{% url 'tags_list' %}">Tags</a>
 				<a href="mailto:datahub@gmail.com">Contact</a>
 			</div>
 			<div class="footer__social">

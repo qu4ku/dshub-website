@@ -6,11 +6,11 @@
     {% if posts.has_previous %}
         <a  href="?page=1" 
             class="button-standard button-pagination">
-            <img src="{% static 'img/arrow-first.png' %}" alt="first page">
+            First Page
         </a>
         <a  href="?page={{ posts.previous_page_number }}" 
             class="button-standard button-pagination">
-            <img src="{% static 'img/arrow-prev.png' %}" alt="previous page">
+            Previous Page
         </a>
     {% endif %}
 
