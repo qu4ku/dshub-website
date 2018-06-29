@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils.dateparse import parse_date
 from django.db.models import Q
@@ -56,6 +56,40 @@ def home_view(request):
 
 	return render(request, template, context)
 
+def post_detail_view(request, slug):
+	template = 'post-detail.html'
+	post = get_list_or_404(Post, slug=slug)
+	
+	# If more than 1 article returned grab first
+	if len(post) > 1: 
+		post = post[0]
+		print(post)
+	context = {'post': post}
+
+	return render(request, template, context)
+
+
+	# Generate tag, number of post by tag pair and then sort it.
+	tags = Tag.objects.all()
+
+	tag_num = []
+	for tag in tags:
+		print(tag.slug, tag.post_set.count())
+		tag_num.append((tag.slug, tag.post_set.count()))
+	# Skip don't used tags
+	tag_num = [tag for tag in tag_num if tag[1] > 0]
+	tag_num_sorted = sorted(tag_num, key=lambda x: x[1], reverse=True)
+
+	# Top ten tags
+	top_tags = tag_num_sorted[:20]
+
+	template = 'home.html'
+	context = {
+		'posts': posts,
+		'tags': top_tags,
+	}
+
+	return render(request, template, context)
 
 def about_view(request):
 	template = 'about.html'

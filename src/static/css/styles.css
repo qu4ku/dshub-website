@@ -9,6 +9,19 @@
 
 }
 
+/*
+:root {
+	--bg-dark: #2f2f2f;
+	--bg-light: #f6f1f0;
+	--secondary-color: #ffa100;
+	--posts-width: 780px;
+	--text-light: #ccd4db;
+	--text-dark: #949494;
+	--underline-color: #00ff78;i
+
+}
+*/
+
 /*------------------ RESET CSS ------------------*/
 
 html, body, div, span, applet, object, iframe,
@@ -349,8 +362,14 @@ a {
 
 
 .subpage-header {
+	font-family: "IBM Plex Sans";
 	font-size: 40px;
-	margin-bottom: 35px;
+	margin-bottom: 20px;
+
+	color: var(--text-light);
+	/*margin-top:0;*/
+	/*color: var(--secondary-color);*/
+
 }
 
 

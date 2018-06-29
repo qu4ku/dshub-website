@@ -10,4 +10,5 @@ urlpatterns = [
 	path('other-tags/', views.other_tags_list_view, name='other_tags_list'),
 	path('tag/<slug:slug>', views.tag_view, name='tag'),
 	path('run/', views.run_view, name='run'),
+	path('post/<slug:slug>/', views.post_detail_view, name='post_detail'),
 ]

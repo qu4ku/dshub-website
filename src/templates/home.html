@@ -10,12 +10,9 @@
 		<a href="{{ post.source_url }}" target="_blank"><div class="post__header">{{ post.title }}</div></a>
 		<div class="post__body">{{ post.content|truncatewords:50 }}</div>
 		<div class="post__info">
-			<div class="post__info__social"> 
-				<img class="social-icon" src="{% static 'img/icons/fb.png' %}" alt="icon">
-				<img class="social-icon" src="{% static 'img/icons/tw.png' %}" alt="icon">
-				<img class="social-icon" src="{% static 'img/icons/ln.png' %}" alt="icon">
-				<img class="social-icon" src="{% static 'img/icons/link.png' %}" alt="icon">
-			</div>
+
+			{% include 'includes/social.html' %}
+			
 			<div class="post__info__source"><a href="{{ post.feed.url }}">{{ post.feed.url_display }}</a></div>
 			<div class="post__info__date">
 				<div>{{ post.date }}</div>
