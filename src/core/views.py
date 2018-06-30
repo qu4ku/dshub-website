@@ -1,22 +1,37 @@
-from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.utils.dateparse import parse_date
-from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+from django.shortcuts import render, get_object_or_404, get_list_or_404
+from django.utils.dateparse import parse_date
 from django.utils.text import slugify
+
 from .models import Post, Feed, Tag, OtherTag
-from datetime import datetime
-import time
 
 from bs4 import BeautifulSoup
-
-import pandas as pd
-
+from datetime import datetime
 import feedparser
 from hashlib import md5
+import pandas as pd
+
+
+
+def generate_top_tags(cap=20):
+	""" Generates sorted list of tag/number pairs."""
+
+	tags = Tag.objects.all()
+
+	tag_num = []
+	for tag in tags:
+		print(tag.slug, tag.post_set.count())
+		tag_num.append((tag.slug, tag.post_set.count()))
+	# Skip don't used tags
+	tag_num = [tag for tag in tag_num if tag[1] > 0]
+	tag_num_sorted = sorted(tag_num, key=lambda x: x[1], reverse=True)
+
+	return tag_num_sorted[:cap]
+
 
 def home_view(request):
-
 	# Check if there is a search
 	query = request.GET.get('q')
 	if query: 
@@ -33,20 +48,7 @@ def home_view(request):
 	page = request.GET.get('page')
 	posts = paginator.get_page(page)
 
-
-	# Generate tag, number of post by tag pair and then sort it.
-	tags = Tag.objects.all()
-
-	tag_num = []
-	for tag in tags:
-		print(tag.slug, tag.post_set.count())
-		tag_num.append((tag.slug, tag.post_set.count()))
-	# Skip don't used tags
-	tag_num = [tag for tag in tag_num if tag[1] > 0]
-	tag_num_sorted = sorted(tag_num, key=lambda x: x[1], reverse=True)
-
-	# Top ten tags
-	top_tags = tag_num_sorted[:20]
+	top_tags = generate_top_tags()
 
 	template = 'home.html'
 	context = {
@@ -56,12 +58,13 @@ def home_view(request):
 
 	return render(request, template, context)
 
+
 def post_detail_view(request, slug):
 	template = 'post-detail.html'
 	post = get_list_or_404(Post, slug=slug)
-	
+
 	# If more than 1 article returned grab first
-	if len(post) > 1: 
+	if len(post) > 1:
 		post = post[0]
 		print(post)
 	context = {'post': post}
@@ -69,46 +72,20 @@ def post_detail_view(request, slug):
 	return render(request, template, context)
 
 
-	# Generate tag, number of post by tag pair and then sort it.
-	tags = Tag.objects.all()
-
-	tag_num = []
-	for tag in tags:
-		print(tag.slug, tag.post_set.count())
-		tag_num.append((tag.slug, tag.post_set.count()))
-	# Skip don't used tags
-	tag_num = [tag for tag in tag_num if tag[1] > 0]
-	tag_num_sorted = sorted(tag_num, key=lambda x: x[1], reverse=True)
-
-	# Top ten tags
-	top_tags = tag_num_sorted[:20]
-
-	template = 'home.html'
-	context = {
-		'posts': posts,
-		'tags': top_tags,
-	}
-
-	return render(request, template, context)
-
 def about_view(request):
 	template = 'about.html'
 
 	return render(request, template)
 
-def tags_list_view(request):
-	# Generate tag, number of post by tag pair and then sort it.
-	tags = Tag.objects.all()
 
-	tag_num = []
-	for tag in tags:
-		print(tag.slug, tag.post_set.count())
-		tag_num.append((tag.slug, tag.post_set.count()))
-	tag_num = [tag for tag in tag_num if tag[1] > 0]
-	tag_num_sorted = sorted(tag_num, key=lambda x: x[1], reverse=True)
+def tags_list_view(request):
+
+	tags = generate_top_tags(100)
+
 	template = 'tags.html'
-	context = {'tags': tag_num_sorted,}
+	context = {'tags': tags,}
 	return render(request, template, context)
+
 
 def other_tags_list_view(request):
 	# Generate tag, number of post by tag pair and then sort it.
@@ -125,9 +102,6 @@ def other_tags_list_view(request):
 	return render(request, template, context)
 
 
-
-
-
 def tag_view(request, slug):
 	tag = get_object_or_404(Tag, slug=slug)
 	post_list = Post.objects.filter(tags=tag)
@@ -141,6 +115,7 @@ def tag_view(request, slug):
 	}
 
 	return render(request, template, context)
+
 
 def normalize_tag(tag):
 	""" Converts "- sometag -" to "tag"""
@@ -161,7 +136,6 @@ def normalize_content(content):
 
 @login_required
 def run_view(request):
-	
 	# Collect guids, tags, and new_tags
 	posts = Post.objects.all()
 	guids = []
