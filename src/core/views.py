@@ -32,7 +32,7 @@ def generate_top_tags(cap=20):
 
 
 def home_view(request):
-	# Check if there is a search
+	# Check if there is a search query
 	query = request.GET.get('q')
 	if query: 
 		post_list = Post.objects.filter(

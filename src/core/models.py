@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class Feed(models.Model):
 
 	title = models.CharField(max_length=100)
@@ -33,6 +34,7 @@ class Feed(models.Model):
 		return self.title
 
 
+
 class Tag(models.Model):
 
 	title = models.CharField(max_length=100, blank=True)
@@ -51,6 +53,8 @@ class Tag(models.Model):
 
 	def __str__(self):
 		return self.title
+
+
 
 class OtherTag(models.Model):
 	"""Tags that are not already in the database"""
@@ -75,34 +79,6 @@ class OtherTag(models.Model):
 
 class Post(models.Model):
 
-	STATUS_CHOICES = (
-		('draft', 'Draft'),
-		('public', 'Public'),
-	)
-
-	feed = models.ForeignKey(Feed, null=True, on_delete=models.SET_NULL)
-
-	status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='public')
-
-	# Compulsory fields
-	title = models.CharField(max_length=280)
-	source_url = models.URLField(
-		max_length=250,
-		help_text="URL for original article.",
-	)
-
-	content = models.TextField(null=True, blank=True)
-	date = models.DateTimeField(
-		help_text="When this post says it was published.",
-	)
-
-
-	is_active = models.BooleanField(default=True)
-	guid = models.CharField(max_length=32)
-	slug = models.SlugField(max_length=280)
-
-	tags = models.ManyToManyField(Tag, blank=True)
-	other_tags = models.ManyToManyField(OtherTag, blank=True)
 	class Meta:
 		verbose_name = 'Post'
 		verbose_name_plural = 'Posts'
@@ -110,11 +86,31 @@ class Post(models.Model):
 		ordering = ('-date',)
 		get_latest_by = 'date'
 
+	STATUS_CHOICES = (
+		('draft', 'Draft'),
+		('public', 'Public'),
+	)
+
+	status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='public')
+	title = models.CharField(max_length=280)
+	source_url = models.URLField(
+		max_length=250,
+		help_text="URL for original article.",
+	)
+	content = models.TextField(null=True, blank=True)
+	feed = models.ForeignKey(Feed, null=True, on_delete=models.SET_NULL)
+	guid = models.CharField(max_length=32)
+	slug = models.SlugField(max_length=280)
+	date = models.DateTimeField(
+		help_text="When this post says it was published.",
+	)
+	tags = models.ManyToManyField(Tag, blank=True)
+	other_tags = models.ManyToManyField(OtherTag, blank=True)
+	is_active = models.BooleanField(default=True)
+
 	def __str__(self):
 		return '{} | {}'.format(self.feed.title, self.title)
 
 	def get_absolute_url(self):
 		return '/post/{}/'.format(self.slug)
-
-
 
