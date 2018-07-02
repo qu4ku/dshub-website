@@ -14,17 +14,21 @@ from hashlib import md5
 import pandas as pd
 
 
-
 def generate_top_tags(cap=20):
-	""" Generates sorted list of tag/number pairs."""
+	"""Generates sorted list of tag/number_of_occurances pairs.
+	
+	Args:
+		cap (int): max nubmer of tags to return.
+	Returns: 
+		list: List of (tag, number_of_occurances) tuples.
+	"""
 
 	tags = Tag.objects.all()
 
 	tag_num = []
 	for tag in tags:
-		print(tag.slug, tag.post_set.count())
 		tag_num.append((tag.slug, tag.post_set.count()))
-	# Skip don't used tags
+	# Tags that occured once or more only
 	tag_num = [tag for tag in tag_num if tag[1] > 0]
 	tag_num_sorted = sorted(tag_num, key=lambda x: x[1], reverse=True)
 
@@ -43,7 +47,7 @@ def home_view(request):
 	else:
 		post_list = Post.objects.all()
 
-	# Pagination system, 18 per page 
+	# Pagination system, 18 posts per page 
 	paginator = Paginator(post_list, 18)
 	page = request.GET.get('page')
 	posts = paginator.get_page(page)
@@ -93,11 +97,10 @@ def other_tags_list_view(request):
 
 	tag_num = []
 	for tag in tags:
-		print(tag.slug, tag.post_set.count())
 		tag_num.append((tag.slug, tag.post_set.count()))
 	# tag_num = [tag for tag in tag_num if tag[1] > 0]
 	tag_num_sorted = sorted(tag_num, key=lambda x: x[1], reverse=True)
-	template = 'tags.html'
+	template = 'other-tags.html'
 	context = {'tags': tag_num_sorted,}
 	return render(request, template, context)
 
@@ -151,8 +154,6 @@ def run_view(request):
 	other_tags = []
 	for other_tag_obj in other_tag_objs:
 		other_tags.append(other_tag_obj.slug)
-	# print(tags)
-	# print(other_tags)
 
 	# Get list of feed objects
 	feeds = Feed.objects.all()
@@ -186,14 +187,14 @@ def run_view(request):
 				new_guid = unicode(md5(article.get("link")).hexdigest())
 			except NameError:
 				new_guid = md5(article.get("link").encode('utf-8')).hexdigest()
-		
-			# Creates new OtherTag if tag doesn't exist
+	
+			# Create new OtherTag if tag doesn't exist
 			tags_to_add = []
 			other_tags_to_add = []
 			for tag_dict in article.get('tags', []):
 				tag_name = tag_dict.get('term') or tag_dict.get('label')
 				tag_name = normalize_tag(tag_name)
-				# print(tag_name)
+				
 				try:
 					is_in_tags = Tag.objects.get(slug=tag_name)
 				except:
@@ -202,13 +203,13 @@ def run_view(request):
 					is_in_other_tags = OtherTag.objects.get(slug=tag_name)
 				except:
 					is_in_other_tags = None
+
 				if is_in_tags:
-					# print(tag_name, 'in tags.')
 					tags_to_add.append(is_in_tags)
 				elif is_in_other_tags:
 					other_tags_to_add.append(is_in_other_tags)
-				else: # Create new Other tag
-					# print(tag_name, 'in otehr tags.')
+				# Create new Other tag
+				else: 
 					new_other_tag = OtherTag(
 						slug=tag_name,
 					)
@@ -244,4 +245,3 @@ def run_view(request):
 		}
 
 	return render(request, 'run.html', context)
-

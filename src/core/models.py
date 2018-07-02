@@ -1,8 +1,14 @@
 from django.db import models
 
 
-
 class Feed(models.Model):
+	"""Feed model of the source website."""
+
+	class Meta:
+		verbose_name = 'Feed'
+		verbose_name_plural = 'Feeds'
+		ordering = ('title', )
+		db_table = 'feed'
 
 	title = models.CharField(max_length=100)
 	slug = models.SlugField(unique=True)
@@ -12,38 +18,23 @@ class Feed(models.Model):
 	url_feed = models.URLField(max_length=250)
 	# URL in human friendly format
 	url_display = models.CharField(max_length=250)
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+	# If not active feed won't be followed
+	is_active = models.BooleanField(default=True)
 
+	# Optional
 	author = models.CharField(max_length=100, blank=True)
 	description = models.TextField(null=True, blank=True)
 	seo_title = models.CharField(max_length=60, blank=True, null=True)
 	seo_description = models.CharField(max_length=165, blank=True, null=True)
-	created = models.DateTimeField(auto_now_add=True)
-	updated = models.DateTimeField(auto_now=True)
-
-	is_active = models.BooleanField(default=True)
-	# Switch off parsing content if feed has wrong format.
-	parse_content = models.BooleanField(default=True)
-
-	class Meta:
-		verbose_name = 'Feed'
-		verbose_name_plural = 'Feeds'
-		ordering = ('title', )
-		db_table = 'feed'
 
 	def __str__(self):
 		return self.title
 
 
-
 class Tag(models.Model):
-
-	title = models.CharField(max_length=100, blank=True)
-	slug = models.SlugField(unique=True)
-	description = models.TextField(null=True, blank=True)
-	seo_title = models.CharField(max_length=60, blank=True, null=True)
-	seo_description = models.CharField(max_length=165, blank=True, null=True)
-	created = models.DateTimeField(auto_now_add=True)
-	updated = models.DateTimeField(auto_now=True)
+	"""Tag model. Many to many."""
 
 	class Meta:
 		verbose_name = 'Tag'
@@ -51,13 +42,26 @@ class Tag(models.Model):
 		db_table = 'tag'
 		ordering = ('title',)
 
+	title = models.CharField(max_length=100, blank=True)
+	slug = models.SlugField(unique=True)
+	description = models.TextField(null=True, blank=True)
+	seo_title = models.CharField(max_length=60, blank=True, null=True)
+	seo_description = models.CharField(max_length=165, blank=True, null=True)
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+
 	def __str__(self):
 		return self.title
 
 
-
 class OtherTag(models.Model):
-	"""Tags that are not already in the database"""
+	"""OtherTag model for tags that are not in the database already."""
+
+	class Meta:
+		verbose_name = 'Other Tag'
+		verbose_name_plural = 'Other Tags'
+		db_table = 'other_tag'
+		ordering = ('title',)
 
 	title = models.CharField(max_length=100, blank=True)
 	slug = models.SlugField(unique=True)
@@ -67,17 +71,12 @@ class OtherTag(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
 
-	class Meta:
-		verbose_name = 'Other Tag'
-		verbose_name_plural = 'Other Tags'
-		db_table = 'other_tag'
-		ordering = ('title',)
-
 	def __str__(self):
 		return self.slug
-		
+
 
 class Post(models.Model):
+	""" Post model."""
 
 	class Meta:
 		verbose_name = 'Post'
@@ -90,12 +89,11 @@ class Post(models.Model):
 		('draft', 'Draft'),
 		('public', 'Public'),
 	)
-
 	status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='public')
 	title = models.CharField(max_length=280)
 	source_url = models.URLField(
 		max_length=250,
-		help_text="URL for original article.",
+		help_text="URL of the original article.",
 	)
 	content = models.TextField(null=True, blank=True)
 	feed = models.ForeignKey(Feed, null=True, on_delete=models.SET_NULL)
@@ -113,4 +111,3 @@ class Post(models.Model):
 
 	def get_absolute_url(self):
 		return '/post/{}/'.format(self.slug)
-

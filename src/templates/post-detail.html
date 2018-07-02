@@ -25,6 +25,24 @@
 	<!-- {% include 'includes/pagination.html' %} -->
 	<a class="button-standard" href="" onclick="if (document.referrer.indexOf(window.location.host) !== -1) { history.go(-1); return false; } else { window.location.href = '/'; }">Back</a>
 
+
+	<div id="disqus_thread"></div>
+		<script>
+			var disqus_config = function () {
+				this.page.url = '{{ post.get_url_for_social }}';  
+				this.page.identifier = '{{ post.slug }}'; 
+				this.disqus_title = '{{ post.title }}';
+				 
+			};
+
+			(function() {
+				var d = document, s = d.createElement('script');
+				s.src = 'https://your_website_name.disqus.com/embed.js';
+				s.setAttribute('data-timestamp', +new Date());
+				(d.head || d.body).appendChild(s);
+			})();
+		</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
 
 

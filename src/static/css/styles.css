@@ -219,8 +219,9 @@ a {
 .social-icon {
 	height: 32px;
 	width: 32px;
-	/*margin-right: 5px;*/
+	/*fill: yellow;*/
 }
+
 
 
 .content {
@@ -284,8 +285,6 @@ a {
 }
 
 
-
-
 /*------------------ FOOTER ------------------*/
 
 .footer {
@@ -293,11 +292,8 @@ a {
 	grid-area: footer;
 	display: grid;
 	grid-auto-flow: row;
-	/*align-self: end;*/
-	/*align-self: start;*/
-	/*height: 200px;*/
 	justify-content: center;
-	margin: -40px;
+	margin-top: -30px;
 	width: 100%;
 	margin-bottom: 20px;
 	color: var(--bg-dark);
