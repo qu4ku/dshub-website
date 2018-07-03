@@ -23,7 +23,7 @@ def generate_top_tags(cap=20):
 		list: List of (tag, number_of_occurances) tuples.
 	"""
 
-	tags = Tag.objects.all()
+	tags = Tag.objects.filter(is_active=True)
 
 	tag_num = []
 	for tag in tags:
@@ -43,9 +43,9 @@ def home_view(request):
 			Q(title__icontains=query) |
 			Q(content__icontains=query) |
 			Q(source_url=query)
-		).distinct()
+		).distinct().filter(is_active=True)
 	else:
-		post_list = Post.objects.all()
+		post_list = Post.objects.filter(is_active=True)
 
 	# Pagination system, 18 posts per page 
 	paginator = Paginator(post_list, 18)
@@ -66,7 +66,7 @@ def home_view(request):
 def post_detail_view(request, slug):
 	template = 'post-detail.html'
 	# Get a list in case there are more than one occurances
-	post = get_list_or_404(Post, slug=slug)
+	post = get_list_or_404(Post, slug=slug, is_active=True)
 	post = post[0]
 
 	context = {'post': post}
@@ -104,7 +104,7 @@ def other_tags_list_view(request):
 
 
 def tag_view(request, slug):
-	tag = get_object_or_404(Tag, slug=slug)
+	tag = get_object_or_404(Tag, slug=slug, is_active=True)
 	post_list = Post.objects.filter(tags=tag)
 	paginator = Paginator(post_list, 18)
 	page = request.GET.get('page')
@@ -130,10 +130,12 @@ def normalize_tag(tag):
 
 	return tag
 
+
 def normalize_content(content):
 	""" Cleaning form html tags """
 	content = BeautifulSoup(content, 'html.parser').get_text()
 	return content
+
 
 @login_required
 def run_view(request):
