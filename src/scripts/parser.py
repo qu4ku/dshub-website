@@ -1,3 +1,7 @@
+"""
+
+"""
+
 import os
 import django
 from django.conf import settings
@@ -10,10 +14,10 @@ from django.utils.dateparse import parse_date
 from django.utils.text import slugify
 
 import sys
-# sys.path.append('../project/settings')
+sys.path.append('../project/settings')
 
-# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'local')
-# django.setup()
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'local')
+django.setup()
 
 
 # from .models import Post, Feed, Tag, OtherTag
