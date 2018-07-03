@@ -65,12 +65,10 @@ def home_view(request):
 
 def post_detail_view(request, slug):
 	template = 'post-detail.html'
+	# Get a list in case there are more than one occurances
 	post = get_list_or_404(Post, slug=slug)
+	post = post[0]
 
-	# If more than 1 article returned grab first
-	if len(post) > 1:
-		post = post[0]
-		print(post)
 	context = {'post': post}
 
 	return render(request, template, context)
