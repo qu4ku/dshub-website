@@ -118,6 +118,31 @@ def tag_view(request, slug):
 	return render(request, template, context)
 
 
+def search_view(request):
+	post_list = Post.objects.filter(is_active=True)
+	query = request.GET.get('q')
+
+	if query: 
+		post_list = Post.objects.filter(
+			Q(title__icontains=query) |
+			Q(content__icontains=query) |
+			Q(source_url=query)
+		).distinct().filter(is_active=True)
+	else:
+		post_list = Post.objects.filter(is_active=True)
+
+	paginator = Paginator(post_list, 18)
+	page = request.GET.get('page')
+	posts = paginator.get_page(page)
+
+	template = 'search-results.html'
+	context = {
+		'posts': posts,
+		'query': query,
+	}
+	return render(request, template, context)
+
+
 def normalize_tag(tag):
 	""" Converts "- sometag -" to "tag"""
 	tag = tag.strip('-')

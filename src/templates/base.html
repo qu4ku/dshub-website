@@ -44,13 +44,41 @@
 
 <div class="wrapper">
 	<header class="top">
-		<div class="top__slogan">All the data you ever need.</div>
+		<div class="top__slogan mobile-hide">All the data you ever need.</div>
 		<a class="top__logo" href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+		
+
+		<input id="toggle-search" type="checkbox">
+		<input id="toggle-menu" type="checkbox">
+
+		<div class="menu-overlay">
+			<ul class="menu-container">
+				<li><a href="{% url 'home' %}">Home</a></li>
+				<li><a href="{% url 'tags_list' %}">Tags</a></li>
+				<li><a href="{% url 'about' %}">About</a></li>
+				<li class="mobile-search"><label for="toggle-search">Search</a></li>
+				<li><label for="toggle-menu" class="menu-off">&#215</label></li>
+			</ul>
+		</div>
+
+		<div class="search-overlay">
+			<label for="toggle-search" class="search-off">&#215</label>
+			<form action="{% url 'search' %}" method="get">
+				<input name="q" value="{{ request.GET.g }}" type="search" autofocus class="search-input" autofocus placeholder="Start typing and press enter.">
+			</form>
+		</div>
+
 		<nav class="top__nav">
 
 			<ul class="web-nav">
+				<li><label for="toggle-search"><img class="search-icon" src="{% static 'img/search-icon-small.png' %}" alt="search icon"></li>
+
 				<li><a href="{% url 'tags_list' %}">Tags</a></li>
 				<li><a href="{% url 'about' %}">About</a></li>
+			</ul>
+
+			<ul class="mobile-nav">
+				<li class="menu-on"><a href="#"><label for="toggle-menu">Menu</label></a></li>
 			</ul>
 		</nav>
 		
