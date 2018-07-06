@@ -19,5 +19,5 @@ DATABASES = {
 
 
 # Needs to be updated
-MEDIA_ROOT = '/var/www/datahub/media/'
-STATIC_ROOT = '/var/www/datahub/static/'
+MEDIA_ROOT = '/var/www/datasciencevault/media/'
+STATIC_ROOT = '/var/www/datasciencevault/static/'
