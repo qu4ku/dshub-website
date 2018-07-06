@@ -98,7 +98,7 @@ a {
 .top {
 	grid-area: top;
 	display: grid;
-	grid-template-columns: 1fr 190px 1fr;
+	grid-template-columns: 1fr 264px 1fr;
 	grid-template-rows: 50px;
 	grid-template-areas: "slogan logo nav";
 	background: var(--bg-light);
@@ -110,6 +110,12 @@ a {
 .top__logo {
 	grid-area: logo;
 	align-items: center;
+	font-size: 30px;
+	font-family: "IBM Plex Sans";
+	color: var(--bg-dark);
+	/*background-color: red;*/
+	text-align: center;
+
 }
 
 .top__slogan {
@@ -120,6 +126,7 @@ a {
 	width: 188px;
 	height: 44px;
 	margin-top: 6px;
+	
 }
 
 .top__nav {
@@ -127,33 +134,38 @@ a {
 	justify-self: right;
 	align-self: center;
 	color: black;
-	/*background-color: red;*/
+
 }
 
 .top__nav ul li a {
 	position: relative;
 	color: black;
 	font-family: 'Roboto Mono', monospace;
-	background: transparent;
+	/*background-color: yellow;*/
+	/*background: transparent;*/
 }
 
 
-
-.top_nav ul li a:after {
+/*.top_nav::after {
+	content: "";
 	position: absolute;
-	content: '';
-	width: 100%;
-	height: 1px;
+	top: 0;
 	left: 0;
-	bottom: -4px;
-	background-color: red;
-}
+	width: 100%;
+	height: 100%;
+	background: red;
+}*/
 
 .web-nav li {
 	display: inline-block;
 	margin-left: 5px;
-
+	
 }
+
+/*.web-nav-link {
+	position: relative;
+	background-color: red;
+}*/
 
 .menu-on {
 	z-index: 99;

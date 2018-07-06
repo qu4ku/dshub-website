@@ -269,4 +269,5 @@ def run_view(request):
 			'new_posts': new_posts,
 		}
 
+	
 	return render(request, 'run.html', context)

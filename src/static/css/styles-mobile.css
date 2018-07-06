@@ -18,11 +18,15 @@
 }
 
 .top {
-	/*grid-template-columns: auto 190px auto;*/
+	grid-template-columns: 1fr 190px 1fr;
 }
 
 .top_slogan {
 
+}
+
+.top__logo {
+	font-size: 20px;
 }
 
 .menu-on {

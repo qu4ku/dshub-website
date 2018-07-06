@@ -15,6 +15,7 @@
 			
 			<div class="post__info__source"><a href="{{ post.feed.url }}">{{ post.feed.url_display }}</a></div>
 			<div class="post__info__date">
+				<a class="comments" href="{{ post.get_absolute_url }}#disqus_thread">Comments</a>				
 				<div>{{ post.date }}</div>
 			</div>
 		</div>
