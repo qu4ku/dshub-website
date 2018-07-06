@@ -1,0 +1,32 @@
+{% load static %}
+
+<div class="pagination">
+<span class="step-links">
+	
+    {% if posts.has_previous %}
+        <a  href="?page=1" 
+            class="button-standard button-pagination">
+            First Page
+        </a>
+        <a  href="?page={{ posts.previous_page_number }}" 
+            class="button-standard button-pagination">
+            Previous Page
+        </a>
+    {% endif %}
+
+    <span class="current">
+        Page <b>{{ posts.number }}</b> of {{ posts.paginator.num_pages }}.
+    </span>
+
+    {% if posts.has_next %}
+        
+        <a  href="?page={{ posts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" 
+            class="button-standard button-pagination">
+            Next Page
+        </a>
+        <a  href="?page={{ posts.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" 
+            class="button-standard button-pagination">
+            Last Page</a>
+    {% endif %}
+</span>
+</div>
