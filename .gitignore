@@ -1,9 +1,0 @@
-db.sqlite3
-*.pyc
-__pycache__/
-.DS_Store
-*.sqlite3
-local.py
-
-gunicorn_start
-activate
