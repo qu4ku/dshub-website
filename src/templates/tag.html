@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block content %}		
+{% block title %}{{ tag.title }} | DataScienceVault - All the data you need.{% endblock title %}
 
+{% block content %}		
 <div class="posts">
 	
 	{% for post in posts %}

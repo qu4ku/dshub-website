@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block content %}		
+{% block title %}{{ query }} | DataScienceVault - All the data you need.{% endblock title %}
 
+{% block content %}		
 <div class="posts">
 	<h2 class="search-header">Search results for: <span>{{ query }}</span></h2>	
 	{% for post in posts %}

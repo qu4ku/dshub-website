@@ -113,6 +113,7 @@ def tag_view(request, slug):
 	template = 'tag.html'
 	context = {
 		'posts': posts,
+		'tag': tag,
 	}
 
 	return render(request, template, context)
