@@ -111,7 +111,7 @@ a {
 	grid-area: logo;
 	align-items: center;
 	font-size: 30px;
-	font-family: "IBM Plex Sans";
+	font-family: 'IBM Plex Sans', sans-serif;
 	color: var(--bg-dark);
 	/*background-color: red;*/
 	text-align: center;
@@ -214,7 +214,7 @@ a {
 }
 
 #toggle-menu:checked ~ .menu-overlay li a, .mobile-search {
-	font-family: "B-Regular", sans-serif;
+	/*font-family: "B-Regular", sans-serif;*/
 	font-size: 30px;
 	text-decoration: none;
 	color: white;
@@ -264,7 +264,6 @@ input[type=search] {
 	display: block;
 	font-size: 20px;
 	padding: 40px;
-	font-family: "B-Regular", sans-serif;
 	font-size: 30px;
 	border-radius: 50px;
 }
@@ -281,7 +280,7 @@ input[type=search] {
 
 .post__header {
 	font-size: 40px;
-	font-family: "IBM Plex Sans";
+	font-family: 'IBM Plex Sans', sans-serif;
 	line-height: 45px;
 	margin-bottom: 20px;
 	color: var(--text-light);
@@ -290,7 +289,7 @@ input[type=search] {
 .post__body {
 	font-size: 13px;
 	line-height: 20px;
-	font-family: "Geneva";
+	/*font-family: "Geneva";*/
 	margin-bottom: 20px;
 	color: var(--text-dark);
 
@@ -298,15 +297,14 @@ input[type=search] {
 
 .post__info {
 	font-family: 'Roboto Mono', monospace;
-	/*text-transform: uppercase;*/
 	margin-bottom: 20px;
 	display: grid;
-	grid-template-columns: 150px auto 240px;
+	grid-template-columns: auto auto 1fr;
 	grid-template-areas: "social source date";
 	color: var(--text-dark);
 	font-size: 12px;
 	grid-column-gap: 10px;
-
+	max-width: 100%;
 } 
 
 .post__info__social {
@@ -389,7 +387,7 @@ input[type=search] {
 }
 
 .content-right__header {
-	font-family: "IBM Plex Sans";
+	font-family: 'IBM Plex Sans', sans-serif;
 	font-size: 40px;
 	color: #676767;
 	margin-bottom: 20px;
@@ -476,7 +474,7 @@ input[type=search] {
 
 
 .subpage-header {
-	font-family: "IBM Plex Sans";
+	font-family: 'IBM Plex Sans', sans-serif;
 	font-size: 40px;
 	margin-bottom: 20px;
 
@@ -486,7 +484,7 @@ input[type=search] {
 }
 
 .search-header {
-	font-family: "IBM Plex Sans";
+	font-family: 'IBM Plex Sans', sans-serif;
 	font-size: 20px;
 	margin-bottom: 20px;
 

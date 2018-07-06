@@ -76,3 +76,9 @@
 	justify-self: start;
 }
 
+input[type=search] {
+	font-size: 14px;
+}
+
+}
+
