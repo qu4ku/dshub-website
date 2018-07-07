@@ -196,11 +196,16 @@ def run_view(request):
 		for article in articles:
 
 			title = article.get('title')
+			is_active = True
 			raw_date = article.get('published')
 
-			# RuntimeWarning: DateTimeField Post.date received a naive datetime (2018-06-26 15:30:52) while time zone support is active.
-			date = pd.to_datetime(raw_date, utc=True)
-
+			# Make it inactive if data format is corrupted.
+			try:
+				date = pd.to_datetime(raw_date, utc=True)
+			except:
+				print('Corrupted Date.')
+				is_active = False
+			
 			source_url = article.get('link')
 
 			content = article.get('description') or article.get(
@@ -253,6 +258,7 @@ def run_view(request):
 					content=content,
 					guid=new_guid,
 					slug=slug,
+					is_active=is_active,
 				)
 				post.save()
 				post.tags.add(*tags_to_add)

@@ -7,7 +7,7 @@ class PostAdmin(admin.ModelAdmin):
 	class Meta:
 		model = Post
 
-	list_filter = ['is_active', 'tags', 'other_tags']
+	list_filter = ['is_active', 'feed', 'tags', 'other_tags']
 	search_fields = ['title', 'content']
 
 admin.site.register(Post, PostAdmin)
