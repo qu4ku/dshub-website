@@ -165,6 +165,7 @@ def normalize_content(content):
 
 @login_required
 def run_view(request):
+	new_posts_counter = 0
 	# Collect guids, tags, and new_tags
 	posts = Post.objects.all()
 	guids = []
@@ -182,7 +183,7 @@ def run_view(request):
 		other_tags.append(other_tag_obj.slug)
 
 	# Get list of feed objects
-	feeds = Feed.objects.all()
+	feeds = Feed.objects.filter(is_active=True)
 	new_posts = []
 	for feed_obj in feeds:
 		print(feed_obj.title)
@@ -195,11 +196,13 @@ def run_view(request):
 		# Go through articles in the feed.
 		for article in articles:
 
-			title = article.get('title')
 			is_active = True
+			
+			title = article.get('title')
+			if not title: 
+				is_active = False
 			raw_date = article.get('published')
-
-			# Make it inactive if data format is corrupted.
+			# Check if data isn't in corrupted format
 			try:
 				date = pd.to_datetime(raw_date, utc=True)
 			except:
@@ -219,37 +222,37 @@ def run_view(request):
 			except NameError:
 				new_guid = md5(article.get("link").encode('utf-8')).hexdigest()
 	
-			# Create new OtherTag if tag doesn't exist
-			tags_to_add = []
-			other_tags_to_add = []
-			for tag_dict in article.get('tags', []):
-				tag_name = tag_dict.get('term') or tag_dict.get('label')
-				tag_name = normalize_tag(tag_name)
-				
-				try:
-					is_in_tags = Tag.objects.get(slug=tag_name)
-				except:
-					is_in_tags = None
-				try:
-					is_in_other_tags = OtherTag.objects.get(slug=tag_name)
-				except:
-					is_in_other_tags = None
-
-				if is_in_tags:
-					tags_to_add.append(is_in_tags)
-				elif is_in_other_tags:
-					other_tags_to_add.append(is_in_other_tags)
-				# Create new Other tag
-				else: 
-					new_other_tag = OtherTag(
-						slug=tag_name,
-					)
-					new_other_tag.save()
-
 			# Save if guid isn't in the database already
 			if new_guid not in guids:
 				print('Post: ', title)
 				print('Saving post.\n')
+				# Create new OtherTag if tag doesn't exist
+				tags_to_add = []
+				other_tags_to_add = []
+				for tag_dict in article.get('tags', []):
+					tag_name = tag_dict.get('term') or tag_dict.get('label')
+					tag_name = normalize_tag(tag_name)
+					
+					try:
+						is_in_tags = Tag.objects.get(slug=tag_name)
+					except:
+						is_in_tags = None
+					try:
+						is_in_other_tags = OtherTag.objects.get(slug=tag_name)
+					except:
+						is_in_other_tags = None
+
+					if is_in_tags:
+						tags_to_add.append(is_in_tags)
+					elif is_in_other_tags:
+						other_tags_to_add.append(is_in_other_tags)
+					# Create new Other tag
+					else: 
+						new_other_tag = OtherTag(
+							slug=tag_name,
+						)
+						new_other_tag.save()
+
 				post = Post(
 					feed=feed_obj,
 					title=title,
@@ -265,10 +268,10 @@ def run_view(request):
 				post.other_tags.add(*other_tags_to_add)
 				post.save()
 				new_posts.append(post)
+				new_posts_counter += 1
 			else:
 				print('\tPost: ', title)
 				print('\tPost already in the database.\n')
-
 				print('SKIPPING THE REST.\n')
 				break
 
@@ -276,5 +279,6 @@ def run_view(request):
 			'new_posts': new_posts,
 		}
 
+	print('\n-----\n{} POSTS AADDED.\n------\n'.format(new_posts_counter))
 	
 	return render(request, 'run.html', context)

@@ -92,6 +92,7 @@ class Post(models.Model):
 
 
 	is_active = models.BooleanField(default=True)
+	is_hidden = models.BooleanField(default=False)
 	title = models.CharField(max_length=280)
 	source_url = models.URLField(
 		max_length=250,
