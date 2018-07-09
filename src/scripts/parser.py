@@ -2,8 +2,8 @@
 
 """
 
-import os
-import django
+# import os
+# import django
 from django.conf import settings
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -13,11 +13,29 @@ from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.utils.dateparse import parse_date
 from django.utils.text import slugify
 
-import sys
+# import sys
 # sys.path.append('../project/settings')
 # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'local')
 # django.setup()
 
+import logging
+
+# Logger sestup
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter('%(asctime)s:%(message)s')
+# formatter = logging.Formatter('%(created)f:%(message)s')
+
+file_handler = logging.FileHandler('../../log/parser.log')
+file_handler.setLevel(logging.INFO)
+file_handler.setFormatter(formatter)
+
+stream_handler = logging.StreamHandler()
+# stream_handler.setFormatter(formatter)
+
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)
 
 # from .models import Post, Feed, Tag, OtherTag
 from core.models import Post, Feed, Tag, OtherTag
@@ -69,8 +87,8 @@ def run():
 	feeds = Feed.objects.filter(is_active=True)
 	new_posts = []
 	for feed_obj in feeds:
-		print(feed_obj.title)
-		print()
+		# logger.debug(feed_obj.title)
+		# logger.info('-')
 		url_feed = feed_obj.url_feed
 		feed = feedparser.parse(url_feed)
 
@@ -89,7 +107,7 @@ def run():
 			try:
 				date = pd.to_datetime(raw_date, utc=True)
 			except:
-				print('Corrupted Date.')
+				logger.exception('Corrupted Date.')
 				is_active = False
 			
 			source_url = article.get('link')
@@ -107,8 +125,9 @@ def run():
 	
 			# Save if guid isn't in the database already
 			if new_guid not in guids:
-				print('Post: ', title)
-				print('Saving post.\n')
+				logger.info('Feed{:<20}Post: {}'.format(feed_obj.title.upper(), title))
+				logger.info('Saving post.\n')
+				
 				# Create new OtherTag if tag doesn't exist
 				tags_to_add = []
 				other_tags_to_add = []
@@ -137,7 +156,7 @@ def run():
 						new_other_tag.save()
 
 				post = Post(
-					feed=feed_obj,
+					# feed=feed_obj,
 					title=title,
 					date=date,
 					source_url=source_url,
@@ -153,15 +172,12 @@ def run():
 				new_posts.append(post)
 				new_posts_counter += 1
 			else:
-				print('\tPost: ', title)
-				print('\tPost already in the database.\n')
-				print('SKIPPING THE REST.\n')
+				logger.debug('--Feed: {:<20}Post: {}'.format(feed_obj.title.upper(), title))
+				logger.debug('--Post already in the database.')
+				logger.debug('--SKIPPING THE REST.\n')
 				break
 
-		context = {
-			'new_posts': new_posts,
-		}
 
-	print('\n-----\n{} POSTS AADDED.\n------\n'.format(new_posts_counter))
+	logger.info('\n-----\n{} POSTS AADDED.\n------\n'.format(new_posts_counter))
 	
 	return 

@@ -7,3 +7,4 @@ local.py
 
 gunicorn_start
 activate
+log/
