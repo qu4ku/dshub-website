@@ -16,6 +16,20 @@ from hashlib import md5
 import pandas as pd
 import logging
 
+
+TAGS_NAMES = {
+	'ai': 'artificial-intelligence',
+	'tutorials': 'tutorial',
+	'apache-spark': 'spark',
+	'data-coding': 'programming',
+	'ai-deep-learning': 'deep-learning',
+	'python3': 'python',
+	'internet-of-thins': 'iot',
+	'algorithmic-bias': 'bias',
+	'big-data-analytics': 'big-data',
+	'web-scraping': 'scraping',
+}
+
 # Logger sestup
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -48,6 +62,10 @@ def normalize_tag(tag):
 	tag = tag.strip().lower()
 	tag = slugify(tag)
 	tag = tag.replace(' ', '-')
+
+	# 
+	if tag in TAGS_NAMES:
+		tag = TAGS_NAMES[tag]
 
 	return tag
 
