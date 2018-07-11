@@ -5,12 +5,12 @@
 	
     {% if posts.has_previous %}
         <a  href="?page=1" 
-            class="button-standard button-pagination">
-            First Page
+            class="button-standard button-pagination mobile-hide">
+            First
         </a>
         <a  href="?page={{ posts.previous_page_number }}" 
             class="button-standard button-pagination">
-            Previous Page
+            Previous
         </a>
     {% endif %}
 
@@ -22,11 +22,11 @@
         
         <a  href="?page={{ posts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" 
             class="button-standard button-pagination">
-            Next Page
+            Next
         </a>
         <a  href="?page={{ posts.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" 
-            class="button-standard button-pagination">
-            Last Page</a>
+            class="button-standard button-pagination mobile-hide">
+            Last</a>
     {% endif %}
 </span>
 </div>

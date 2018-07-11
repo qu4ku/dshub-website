@@ -43,9 +43,9 @@ def home_view(request):
 			Q(title__icontains=query) |
 			Q(content__icontains=query) |
 			Q(source_url=query)
-		).distinct().filter(is_active=True)
+		).distinct().filter(is_active=True, is_hidden=False)
 	else:
-		post_list = Post.objects.filter(is_active=True)
+		post_list = Post.objects.filter(is_active=True, is_hidden=False)
 
 	# Pagination system, 18 posts per page 
 	paginator = Paginator(post_list, 18)
@@ -120,7 +120,7 @@ def tag_view(request, slug):
 
 
 def search_view(request):
-	post_list = Post.objects.filter(is_active=True)
+
 	query = request.GET.get('q')
 
 	if query: 
@@ -128,9 +128,9 @@ def search_view(request):
 			Q(title__icontains=query) |
 			Q(content__icontains=query) |
 			Q(source_url=query)
-		).distinct().filter(is_active=True)
+		).distinct().filter(is_active=True, is_hidden=False)
 	else:
-		post_list = Post.objects.filter(is_active=True)
+		post_list = Post.objects.filter(is_active=True, is_hidden=False)
 
 	paginator = Paginator(post_list, 18)
 	page = request.GET.get('page')
@@ -292,127 +292,3 @@ def run_view(request):
 	print('\n-----\n{} POSTS AADDED.\n------\n'.format(new_posts_counter))
 	
 	return render(request, 'run.html', context)
-
-""" Old verision
-@login_required
-def run_view(request):
-	new_posts_counter = 0
-	# Collect guids, tags, and new_tags
-	posts = Post.objects.all()
-	guids = []
-	for post in posts:
-		guids.append(post.guid)
-
-	tag_objs = Tag.objects.all()
-	tags = []
-	for tag_obj in tag_objs:
-		tags.append(tag_obj.slug)
-
-	other_tag_objs = OtherTag.objects.all()
-	other_tags = []
-	for other_tag_obj in other_tag_objs:
-		other_tags.append(other_tag_obj.slug)
-
-	# Get list of feed objects
-	feeds = Feed.objects.filter(is_active=True)
-	new_posts = []
-	for feed_obj in feeds:
-		print(feed_obj.title)
-		print()
-		url_feed = feed_obj.url_feed
-		feed = feedparser.parse(url_feed)
-
-		articles = feed['items']
-
-		# Go through articles in the feed.
-		for article in articles:
-
-			is_active = True
-			
-			title = article.get('title')
-			if not title: 
-				is_active = False
-			raw_date = article.get('published')
-			# Check if data isn't in corrupted format
-			try:
-				date = pd.to_datetime(raw_date, utc=True)
-			except:
-				print('Corrupted Date.')
-				is_active = False
-			
-			source_url = article.get('link')
-
-			content = article.get('description') or article.get(
-				'content', [{'value': ''}])[0]['value']
-			content = normalize_content(content)
-
-			slug = slugify(title)
-
-			try:
-				new_guid = unicode(md5(article.get("link")).hexdigest())
-			except NameError:
-				new_guid = md5(article.get("link").encode('utf-8')).hexdigest()
-	
-			# Save if guid isn't in the database already
-			# Skip the rest of posts if guid is in a database
-			if new_guid not in guids:
-				print('Post: ', title)
-				print('Saving post.\n')
-				# Create new OtherTag if tag doesn't exist
-				tags_to_add = []
-				other_tags_to_add = []
-				for tag_dict in article.get('tags', []):
-					tag_name = tag_dict.get('term') or tag_dict.get('label')
-					tag_name = normalize_tag(tag_name)
-					
-					try:
-						is_in_tags = Tag.objects.get(slug=tag_name)
-					except:
-						is_in_tags = None
-					try:
-						is_in_other_tags = OtherTag.objects.get(slug=tag_name)
-					except:
-						is_in_other_tags = None
-
-					if is_in_tags:
-						tags_to_add.append(is_in_tags)
-					elif is_in_other_tags:
-						other_tags_to_add.append(is_in_other_tags)
-					# Create new Other tag
-					else: 
-						new_other_tag = OtherTag(
-							slug=tag_name,
-						)
-						new_other_tag.save()
-
-				post = Post(
-					feed=feed_obj,
-					title=title,
-					date=date,
-					source_url=source_url,
-					content=content,
-					guid=new_guid,
-					slug=slug,
-					is_active=is_active,
-				)
-				post.save()
-				post.tags.add(*tags_to_add)
-				post.other_tags.add(*other_tags_to_add)
-				post.save()
-				new_posts.append(post)
-				new_posts_counter += 1
-			else:
-				print('\tPost: ', title)
-				print('\tPost already in the database.\n')
-				print('SKIPPING THE REST.\n')
-				break
-
-		context = {
-			'new_posts': new_posts,
-		}
-
-	print('\n-----\n{} POSTS AADDED.\n------\n'.format(new_posts_counter))
-	
-	return render(request, 'run.html', context)
-
-"""

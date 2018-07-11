@@ -1,9 +1,3 @@
-"""
-
-"""
-
-import os
-# import django
 from django.conf import settings
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -13,12 +7,6 @@ from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.utils.dateparse import parse_date
 from django.utils.text import slugify
 
-# import sys
-# sys.path.append('../project/settings')
-# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'local')
-# django.setup()
-
-# from .models import Post, Feed, Tag, OtherTag
 from core.models import Post, Feed, Tag, OtherTag
 
 from bs4 import BeautifulSoup
@@ -26,7 +14,6 @@ from datetime import datetime
 import feedparser
 from hashlib import md5
 import pandas as pd
-import time
 import logging
 
 # Logger sestup
@@ -36,7 +23,12 @@ logger.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s:%(message)s')
 # formatter = logging.Formatter('%(created)f:%(message)s')
 # print(os.getcwd())
-file_handler = logging.FileHandler('../../../log/parser.log')
+print('DEBUG: ', settings.DEBUG)
+if settings.DEBUG:
+	file_handler = logging.FileHandler('../log/parser.log')
+else: 
+	file_handler = logging.FileHandler('/var/www/datasciencevault/log/parser.log')
+
 file_handler.setLevel(logging.DEBUG)
 file_handler.setFormatter(formatter)
 
@@ -45,7 +37,6 @@ stream_handler = logging.StreamHandler()
 
 logger.addHandler(file_handler)
 logger.addHandler(stream_handler)
-
 
 
 def normalize_tag(tag):
