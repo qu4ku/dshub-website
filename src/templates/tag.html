@@ -5,7 +5,7 @@
 
 {% block content %}		
 <div class="posts">
-	
+	<h2 class="search-header">Tag: <span>{{ tag }}</span></h2>	
 	{% for post in posts %}
 	<div class="post"> <!-- post-start -->
 		<a href="{{ post.source_url }}" target="_blank"><div class="post__header">{{ post.title }}</div></a>
@@ -16,6 +16,7 @@
 			
 			<div class="post__info__source"><a href="{{ post.feed.url }}">{{ post.feed.url_display }}</a></div>
 			<div class="post__info__date">
+				<a class="comments" href="{{ post.get_absolute_url }}#disqus_thread">Comments</a>				
 				<div>{{ post.date }}</div>
 			</div>
 		</div>
