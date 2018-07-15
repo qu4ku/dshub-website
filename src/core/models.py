@@ -107,13 +107,13 @@ class Post(models.Model):
 	)
 	tags = models.ManyToManyField(Tag, blank=True)
 	other_tags = models.ManyToManyField(OtherTag, blank=True)
-	
 
 	def __str__(self):
 		try:
 			return '{} | {}'.format(self.feed.title, self.title)
-		except:
+		except Exception:
 			return 'Corrupted.'
 
 	def get_absolute_url(self):
 		return '/post/{}/'.format(self.slug)
+		

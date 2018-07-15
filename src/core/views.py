@@ -7,12 +7,6 @@ from django.utils.text import slugify
 
 from .models import Post, Feed, Tag, OtherTag
 
-from bs4 import BeautifulSoup
-from datetime import datetime
-import feedparser
-from hashlib import md5
-import pandas as pd
-
 
 def generate_top_tags(cap=20):
 	"""Generates sorted list of tag/number_of_occurances pairs.
