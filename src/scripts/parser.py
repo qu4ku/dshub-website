@@ -37,8 +37,9 @@ logger.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s:%(message)s')
 # formatter = logging.Formatter('%(created)f:%(message)s')
 # print(os.getcwd())
-print('DEBUG: ', settings.DEBUG)
+
 if settings.DEBUG:
+	print('DEBUG: ', settings.DEBUG)
 	file_handler = logging.FileHandler('../log/parser.log')
 else: 
 	file_handler = logging.FileHandler('/var/www/datasciencevault/log/parser.log')
@@ -119,12 +120,11 @@ def run():
 				if not date:
 					date = pd.Timestamp.utcnow()
 					is_active = False
-
-			except:
+			except Exception:
 				date = pd.Timestamp.utcnow()
 				logger.exception('Corrupted Date.', exc_info=True)
 				is_active = False
-			
+		
 			source_url = article.get('link')
 
 			content = article.get('description') or article.get(
@@ -137,26 +137,26 @@ def run():
 				new_guid = unicode(md5(article.get("link")).hexdigest())
 			except NameError:
 				new_guid = md5(article.get("link").encode('utf-8')).hexdigest()
-	
+
 			# Save if guid isn't in the database already
 			if new_guid not in guids:
 				logger.info('Feed: {:<20}\nPost: {}'.format(feed_obj.title.upper(), title))
-				
+
 				# Create new OtherTag if tag doesn't exist
 				tags_to_add = []
 				other_tags_to_add = []
 				for tag_dict in article.get('tags', []):
 					tag_name = tag_dict.get('term') or tag_dict.get('label')
 					tag_name = normalize_tag(tag_name)
-					
+
 					try:
 						is_in_tags = Tag.objects.get(slug=tag_name)
-					except:
+					except Exception:
 						is_in_tags = None
 
 					try:
 						is_in_other_tags = OtherTag.objects.get(slug=tag_name)
-					except:
+					except Exception:
 						is_in_other_tags = None
 
 					if is_in_tags:
@@ -164,7 +164,7 @@ def run():
 					elif is_in_other_tags:
 						other_tags_to_add.append(is_in_other_tags)
 					# Create new Other tag
-					else: 
+					else:
 						new_other_tag = OtherTag(
 							slug=tag_name,
 						)
@@ -196,7 +196,6 @@ def run():
 				logger.debug('--SKIPPING THE REST.\n')
 				break
 
-
 	logger.info('\n-\n{} POSTS ADDED.\n-\n'.format(new_posts_counter))
-	
-	return 
+
+	return
