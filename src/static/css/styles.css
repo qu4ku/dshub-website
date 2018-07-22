@@ -82,6 +82,9 @@ a {
 	color: var(--secondary-color);
 }
 
+svg, svg * {
+  pointer-events: none;
+}
 
 .wrapper {
 	display: grid;
