@@ -64,7 +64,6 @@ def post_detail_view(request, slug):
 	post = post[0]
 
 	context = {'post': post}
-
 	return render(request, template, context)
 
 
@@ -80,6 +79,7 @@ def tags_list_view(request):
 
 	template = 'tags.html'
 	context = {'tags': tags,}
+
 	return render(request, template, context)
 
 
@@ -135,4 +135,5 @@ def search_view(request):
 		'posts': posts,
 		'query': query,
 	}
+	
 	return render(request, template, context)

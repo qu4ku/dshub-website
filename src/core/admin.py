@@ -8,6 +8,8 @@ class PostAdmin(admin.ModelAdmin):
 	class Meta:
 		model = Post
 
+	list_display = ['feed', 'title', 'is_active']
+	list_editable = ['is_active']
 	list_filter = ['is_active', 'feed', 'tags', 'other_tags']
 	search_fields = ['title', 'content']
 
