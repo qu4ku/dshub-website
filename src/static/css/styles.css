@@ -5,7 +5,7 @@
 	--posts-width: 780px;
 	--text-light: #ccd4db;
 	--text-dark: #949494;
-	--underline-color: #00ff78;i
+	--underline-color: #00ff78;
 
 }
 
@@ -17,7 +17,7 @@
 	--posts-width: 780px;
 	--text-light: #ccd4db;
 	--text-dark: #949494;
-	--underline-color: #00ff78;i
+	--underline-color: #00ff78;
 
 }
 */
@@ -466,11 +466,28 @@ input[type=search] {
 	letter-spacing: 1px;
 }
 
+.footer__author p, a {
+	font-family: 'Roboto Mono', monospace;
+	/*margin: 20px 0 20px 0;*/
+	font-size: 10px;
+	line-height: 18px;
+	text-align: center;
+	/*top-margin: 50px;*/
+}
 
+.footer__author__created {
+	margin-top: 20px;
+}
 
 
 .footer__social {
 	color: black;
+}
+
+.deltabaryon {
+	color: #1bc55f;
+	margin-bottom: 40px;
+	text-decoration: underline;
 }
 
 /*------------------ SUBPAGE ------------------*/
