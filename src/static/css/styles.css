@@ -466,7 +466,7 @@ input[type=search] {
 	letter-spacing: 1px;
 }
 
-.footer__author p, a {
+.footer__author p, .footer__author a {
 	font-family: 'Roboto Mono', monospace;
 	/*margin: 20px 0 20px 0;*/
 	font-size: 10px;
