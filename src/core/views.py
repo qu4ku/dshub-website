@@ -63,7 +63,21 @@ def post_detail_view(request, slug):
 	post = get_list_or_404(Post, slug=slug, is_active=True)
 	post = post[0]
 
-	context = {'post': post}
+	tags = post.tags.all() # Get categories objects
+	print(tags)
+	
+	tags_dict = {}
+	post_cap = 3
+	for tag in tags:
+
+		top_posts =  Post.objects.all().filter(tags=tag)[:post_cap]
+		tags_dict[tag] = top_posts
+	print(tags_dict)
+	context = {
+		'post': post,
+		'tags': tags_dict,
+		}
+
 	return render(request, template, context)
 
 

@@ -80,6 +80,13 @@ a {
 	font-family: 'Roboto Mono', monospace;	
 	text-decoration: none;
 	color: var(--secondary-color);
+
+	transition-duration: 0.5s;
+}
+
+a:hover {
+	text-decoration: underline;
+	transition-duration: 0.5s;
 }
 
 svg, svg * {
@@ -513,6 +520,22 @@ input[type=search] {
 
 .search-header span {
 	color: var(--secondary-color);
+}
+
+.categories {
+	margin-bottom: 20px;
+}
+
+.categories__header {
+	font-size: 20px;
+}
+
+.categories__title {
+	margin-top: 20px;
+}
+
+.link-detail-post:hover {
+	text-decoration: underline;
 }
 
 

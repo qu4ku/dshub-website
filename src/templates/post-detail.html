@@ -20,6 +20,20 @@
 			</div>
 		</div>
 		<div class="post__line"></div>
+		{% if tags %}
+			<div class="categories">
+				<div class="categories__header">You may be interested in:</div>
+				{% for tag, posts in tags.items %}
+
+				<div class="categories__title">Newest in: <a class="link-standard" href="{% url 'tag' slug=tag.slug %}">{{ tag.title }}</a></div>
+					{% for post in posts %}
+						<p><a class="link-detail-post" href="{{ post.url }}" target="_blank">{{ post.title }}</a></p>
+					{% endfor %}
+				
+				{% endfor %}
+			</div>
+			<div class="post__line"></div>
+		{% endif %}
 	</div> <!-- end-post -->
 
 
