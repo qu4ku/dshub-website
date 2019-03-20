@@ -27,7 +27,7 @@
 
 				<div class="categories__title">Newest in: <a class="link-standard" href="{% url 'tag' slug=tag.slug %}">{{ tag.title }}</a></div>
 					{% for post in posts %}
-						<p><a class="link-detail-post" href="{{ post.url }}" target="_blank">{{ post.title }}</a></p>
+						<p><a class="link-detail-post" href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
 					{% endfor %}
 				
 				{% endfor %}
