@@ -90,7 +90,6 @@ class Post(models.Model):
 		ordering = ('-date',)
 		get_latest_by = 'date'
 
-
 	is_active = models.BooleanField(default=True)
 	is_hidden = models.BooleanField(default=False)
 	title = models.CharField(max_length=280)
@@ -116,4 +115,3 @@ class Post(models.Model):
 
 	def get_absolute_url(self):
 		return '/post/{}/'.format(self.slug)
-		

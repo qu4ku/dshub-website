@@ -1,6 +1,7 @@
 from django.contrib.sitemaps import Sitemap
-from core.models import Post, Tag
 from django.urls import reverse
+
+from core.models import Post, Tag
 
 
 class PostsSitemap(Sitemap):

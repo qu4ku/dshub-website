@@ -63,20 +63,16 @@ def post_detail_view(request, slug):
 	post = get_list_or_404(Post, slug=slug, is_active=True)
 	post = post[0]
 
-	tags = post.tags.all() # Get categories objects
-	print(tags)
-	
+	tags = post.tags.all()  # Get categories objects
 	tags_dict = {}
 	post_cap = 3
 	for tag in tags:
-
-		top_posts =  Post.objects.all().filter(tags=tag)[:post_cap]
+		top_posts = Post.objects.all().filter(tags=tag)[:post_cap]
 		tags_dict[tag] = top_posts
-	print(tags_dict)
 	context = {
 		'post': post,
 		'tags': tags_dict,
-		}
+	}
 
 	return render(request, template, context)
 
@@ -88,7 +84,6 @@ def about_view(request):
 
 
 def tags_list_view(request):
-
 	tags = generate_top_tags(100)
 
 	template = 'tags.html'
@@ -104,10 +99,11 @@ def other_tags_list_view(request):
 	tag_num = []
 	for tag in tags:
 		tag_num.append((tag.slug, tag.post_set.count()))
-	# tag_num = [tag for tag in tag_num if tag[1] > 0]
 	tag_num_sorted = sorted(tag_num, key=lambda x: x[1], reverse=True)
+
 	template = 'other-tags.html'
-	context = {'tags': tag_num_sorted,}
+	context = {'tags': tag_num_sorted}
+
 	return render(request, template, context)
 
 
@@ -128,10 +124,9 @@ def tag_view(request, slug):
 
 
 def search_view(request):
-
 	query = request.GET.get('q')
 
-	if query: 
+	if query:
 		post_list = Post.objects.filter(
 			Q(title__icontains=query) |
 			Q(content__icontains=query) |
@@ -149,5 +144,5 @@ def search_view(request):
 		'posts': posts,
 		'query': query,
 	}
-	
+
 	return render(request, template, context)
