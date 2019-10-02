@@ -299,12 +299,11 @@ input[type=search] {
 }
 
 .post__body {
-	font-size: 13px;
-	line-height: 20px;
+	font-size: 16px;
+	line-height: 22px;
 	/*font-family: "Geneva";*/
 	margin-bottom: 20px;
 	color: var(--text-dark);
-
 }
 
 .post__info {
