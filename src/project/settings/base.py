@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'core',
     'django_extensions',
     'django.contrib.sitemaps',
+    'dbbackup',
 ]
 
 MIDDLEWARE = [
