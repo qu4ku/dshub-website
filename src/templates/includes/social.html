@@ -1,17 +1,17 @@
 {% load static %}
 
 <div class="post__info__social"> 
-	<a href="http://www.facebook.com/share.php?u={{ post.source_url }}&title={{ post.title|urlencode }} via https://datasciencehub.com">
+	<a href="http://www.facebook.com/share.php?u={{ post.source_url }}&title={{ post.title|urlencode }} via https://datasciencehub.com" rel="nofollow">
 		<img class="social-icon" src="{% static 'img/icons/fb.svg' %}" alt="facebook social icon">
 
 	</a>
-	<a href="http://twitter.com/home?status={{ post.title|urlencode }}+{{ post.source_url }}%20via%20https%3A%2F%2Fdatasciencehub.com">
+	<a href="http://twitter.com/home?status={{ post.title|urlencode }}+{{ post.source_url }}%20via%20https%3A%2F%2Fdatasciencehub.com" rel="nofollow">
 		<img class="social-icon" src="{% static 'img/icons/tw.svg' %}" alt="twitter social icon">
 	</a>
-	<a href="http://www.linkedin.com/shareArticle?mini=true&url={{ post.source_url }}&title={{ post.title|urlencode }}&source=https://datasciencehub.com" >
+	<a href="http://www.linkedin.com/shareArticle?mini=true&url={{ post.source_url }}&title={{ post.title|urlencode }}&source=https://datasciencehub.com" rel="nofollow">
 	<img class="social-icon" src="{% static 'img/icons/ln.svg' %}" alt="linkedin social icon">
 	</a>
-	<a href="{{ post.get_absolute_url }}"><img class="social-icon" src="{% static 'img/icons/link.svg' %}" alt="article detail view icon"></a>
+	<a href="{{ post.get_absolute_url }}"><img class="social-icon" src="{% static 'img/icons/link.svg' %}" alt="article detail view icon" ></a>
 </div>
 
 
