@@ -167,7 +167,10 @@ def run():
 						new_other_tag = OtherTag(
 							slug=tag_name,
 						)
-						new_other_tag.save()
+						try:  # Slug too long problem
+							new_other_tag.save()
+						except:
+							pass
 				# Checks if variables are not empty		
 				if all([feed_obj, title, date, source_url, new_guid, slug]):
 					post = Post(
