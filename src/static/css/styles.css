@@ -93,6 +93,10 @@ svg, svg * {
   pointer-events: none;
 }
 
+.mobile-display {
+	display: none;
+}
+
 .wrapper {
 	display: grid;
 	grid-template-columns: minmax(20px, 50px) auto minmax(20px, 50px);
@@ -382,14 +386,11 @@ input[type=search] {
 
 .content-right__adv {
 	margin-bottom: 50px;
-	/*background: yellow;*/
-	/*height: 100%;*/
-	/*width: 100%;*/
+
 }
 
 .content-right__adv img {
-	/*width: 280px;*/
-	/*height: 700px;*/
+
 }
 
 
@@ -402,6 +403,11 @@ input[type=search] {
 	font-size: 40px;
 	color: #676767;
 	margin-bottom: 20px;
+}
+
+.horizontal__adv {
+	margin-top: 25px;
+
 }
 
 
