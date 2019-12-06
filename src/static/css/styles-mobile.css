@@ -84,7 +84,6 @@ input[type=search] {
 	font-size: 14px;
 }
 
-}
 
 .pagination {
 	margin-bottom: 20px;
@@ -94,6 +93,9 @@ input[type=search] {
 	width: 100%;
 }
 
+.content-right__adv--second {
+	margin-top: 0px;
+}
 
 .content-right__adv img {
   width: 100%;
@@ -104,3 +106,5 @@ input[type=search] {
 	margin-bottom: 25px;
 }
 
+
+}

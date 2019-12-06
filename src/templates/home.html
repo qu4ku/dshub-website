@@ -31,4 +31,16 @@
 {% block content-right %}
 	{% include 'includes/content-right-adv01.html' %}
 	{% include 'includes/content-right-tags.html' %}
+
+	<div class="content-right__adv mobile-hide content-right__adv--second">
+		<a href="https://knowledgeprotocol.com/" target="_blank"><img src="{% static 'img/adv-280x280-kp-01.jpg' %}" alt="knowledge protocol website adv"></a>
+	</div>
+
+	<div class="content-right__adv mobile-display content-right__adv--second">
+		<a href="https://knowledgeprotocol.com/" target="_blank">
+			<img src="{% static 'img/adv-640x640-kp-01.jpg' %}" alt="knowledge protocol website adv">
+		</a>
+	</div>
+
+
 {% endblock content-right %}
