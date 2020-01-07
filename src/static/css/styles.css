@@ -437,6 +437,14 @@ input[type=search] {
 	text-align: center;
 }
 
+.footer h1 {
+	font-family: 'Roboto Mono', monospace;
+	margin: 20px 20px 20px 20px;
+	font-size: 12px;
+	line-height: 18px;
+	text-align: center;
+}
+
 .footer img {
 	justify-self: center;
 	transform: translateX(-5px);
