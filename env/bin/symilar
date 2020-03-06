@@ -1,0 +1,11 @@
+#!/Users/kamilwroniewicz/_code/_github/180601-datasciencevault-web/env/bin/python3
+
+# -*- coding: utf-8 -*-
+import re
+import sys
+
+from pylint import run_symilar
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
+    sys.exit(run_symilar())

@@ -546,11 +546,16 @@ input[type=search] {
 }
 
 .categories__header {
-	font-size: 20px;
+	font-size: 32px;
 }
 
 .categories__title {
 	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+.link-detail-post {
+	font-size: 18px;
 }
 
 .link-detail-post:hover {
