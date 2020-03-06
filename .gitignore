@@ -8,3 +8,6 @@ local.py
 gunicorn_start
 activate
 log/
+
+.vscode
+env/
