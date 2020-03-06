@@ -116,12 +116,18 @@ def run():
 			# Check if data isn't in corrupted format
 			try:
 				date = pd.to_datetime(raw_date, utc=True)
-				if not date:
+				now = pd.Timestamp.utcnow()
+
+				if date:
+					if date > now:  # filtering dates from the future
+						date = now
+				else:
 					date = pd.Timestamp.utcnow()
 					is_active = False
 			except Exception:
 				date = pd.Timestamp.utcnow()
 				logger.exception('Corrupted Date.', exc_info=True)
+				logger.info(f'Corrupted raw date: {str(raw_date)}')
 				is_active = False
 		
 			source_url = article.get('link')
