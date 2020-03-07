@@ -10,4 +10,5 @@ activate
 log/
 
 .vscode
+.vscode/
 env/
