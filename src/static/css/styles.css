@@ -1,7 +1,9 @@
 :root {
 	--bg-dark: #090812;
 	--bg-light: #f6f1f0;
-	--secondary-color: #d76653;
+	/* --secondary-color: #d76653; */
+	--secondary-color: #00ff78;
+	--secondary-darker-color: #1bc55f;
 	--posts-width: 780px;
 	--text-light: #ccd4db;
 	--text-dark: #949494;
@@ -302,6 +304,12 @@ input[type=search] {
 	color: var(--text-light);
 }
 
+.post__original-source {
+	font-size: 12px;
+	margin-bottom: 20px;
+	color: white;
+}
+
 .post__body {
 	font-size: 16px;
 	line-height: 22px;
@@ -459,12 +467,13 @@ input[type=search] {
 	text-decoration: underline;
 	font-size: 10px;
 	margin: 0 4px;
+	color:	var(--secondary-darker-color);
 }
 
 .footer__links a:after {
     content: "|";
     display: inline-block;
-    margin-left: 10px;
+	margin-left: 10px;
 }
 
 .footer__links a:last-child:after {
