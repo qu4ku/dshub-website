@@ -61,7 +61,10 @@
 	<header class="top">
 		<div class="top__slogan mobile-hide">All the data you need.</div>
 		<!-- <a class="top__logo" href="{% url 'home' %}"><img src="{% static 'img/logo2.svg' %}" alt="logo"></a> -->
-		<a class="top__logo" href="{% url 'home' %}">Data Science Vault</a>
+		{% comment %} <a class="top__logo" href="{% url 'home' %}">Data Science Vault</a> {% endcomment %}
+		<a class="top__logo" href="{% url 'home' %}">
+			<img src="{% static 'img/ds-logo.png' %}" alt="Data Science Vault Logo">
+		</a>	
 		
 
 		<input id="toggle-search" type="checkbox">

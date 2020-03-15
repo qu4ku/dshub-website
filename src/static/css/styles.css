@@ -102,7 +102,7 @@ svg, svg * {
 .wrapper {
 	display: grid;
 	grid-template-columns: minmax(20px, 50px) auto minmax(20px, 50px);
-	grid-template-rows: 50px auto auto;
+	grid-template-rows: 80px auto auto;
 	grid-template-areas:
 	"left top right"
 	"left content right"
@@ -115,7 +115,7 @@ svg, svg * {
 	grid-area: top;
 	display: grid;
 	grid-template-columns: 1fr 264px 1fr;
-	grid-template-rows: 50px;
+	grid-template-rows: 80px;
 	grid-template-areas: "slogan logo nav";
 	background: var(--bg-light);
 	align-items: center;
@@ -130,8 +130,8 @@ svg, svg * {
 	font-family: 'IBM Plex Sans', sans-serif;
 	font-weight: 700;
 	color: var(--bg-dark);
-	/*background-color: red;*/
 	text-align: center;
+	margin-top: 10px;
 
 }
 

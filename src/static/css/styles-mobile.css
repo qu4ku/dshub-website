@@ -10,7 +10,7 @@
 
 .wrapper {
 	grid-template-columns: 1fr;
-	grid-template-rows: 50px 1fr auto;
+	grid-template-rows: 60px 1fr auto;
 	grid-template-areas:
 	"top"
 	"content"
@@ -19,6 +19,10 @@
 
 .top {
 	grid-template-columns: 1fr 190px 1fr;
+}
+
+.top__logo {
+	margin-top: -10px;
 }
 
 .top_slogan {
@@ -40,6 +44,7 @@
 .mobile-nav {
 	display: block;
 	margin-right: 30px;
+	margin-top: -20px;
 }
 
 .content {
