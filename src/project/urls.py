@@ -17,6 +17,7 @@ sitemaps = {
 urlpatterns = [
 	path('my_admin/', admin.site.urls),
 	path('', include('core.urls')),
+	path('books/', include('books.urls')),
 	path('sitemap.xml', sitemap, {'sitemaps': sitemaps})
 ]
 

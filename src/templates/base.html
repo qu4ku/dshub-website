@@ -73,6 +73,7 @@
 		<div class="menu-overlay">
 			<ul class="menu-container">
 				<li><a href="{% url 'home' %}">Home</a></li>
+				<li><a href="{% url 'books' %}">Best Books</a></li>
 				<li><a href="{% url 'tags_list' %}">Tags</a></li>
 				<li><a href="{% url 'about' %}">About</a></li>
 				<li class="mobile-search"><label for="toggle-search">Search</a></li>
@@ -91,9 +92,11 @@
 
 			<ul class="web-nav">
 				<li><label for="toggle-search"><img class="search-icon" src="{% static 'img/search-icon-small.png' %}" alt="search icon"></li>
-
+				
+				<li><a href="{% url 'books' %}">Best Books</a></li>
 				<li><a href="{% url 'tags_list' %}">Tags</a></li>
 				<li><a href="{% url 'about' %}">About</a></li>
+
 			</ul>
 
 			<ul class="mobile-nav">

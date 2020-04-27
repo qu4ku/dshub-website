@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}The Best Data Science Books | DataScienceVault - All the books you need.{% endblock title %}
+
+{% block content %}		
+<div class="books">
+	<h1>Selection of the Best Data Science Books</h1>
+	<h2>We aim to gather the best books about data science in one place. </h2>	
+	<br><br>
+
+
+	<div class="book">
+		<a href="https://www.amazon.co.uk/dp/149190142X/" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/data-science-from-scratch.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="https://www.amazon.co.uk/dp/149190142X/" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title">Data Science from Scratch</h3></a>
+			<div class="book__content__author">by Joel Grus</div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description">Data science libraries, frameworks, modules, and toolkits are great for doing data science, but they’re also a good way to dive into the discipline without actually understanding data science. In this book, you’ll learn how many of the most fundamental data science tools and algorithms work by implementing them from scratch.</div>
+			<a class="button-amazon" href="https://www.amazon.co.uk/dp/149190142X/" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+
+
+	<div class="book">
+		<a href="https://www.amazon.co.uk/dp/1449369413/" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/introdution-to-machine-learning-with-python.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="https://www.amazon.co.uk/dp/1449369413/" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title">Introduction to Machine Learning with Python: A Guide for Data Scientists</h3></a>
+			<div class="book__content__author">by Sarah Guido,  Andreas C. Mueller</div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description">Many Python developers are curious about what machine learning is and how it can be concretely applied to solve issues faced in businesses handling medium to large amount of data. Machine Learning with Python teaches you the basics of machine learning and provides a thorough hands-on understanding of the subject.</div>
+			<a class="button-amazon" href="https://www.amazon.co.uk/dp/1449369413/" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+
+
+	<div class="book">
+		<a href="https://www.amazon.co.uk/dp/1491957662/" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/python-for-data-science-analysis.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="https://www.amazon.co.uk/dp/1491957662/" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title">Python for Data Analysis</h3></a>
+			<div class="book__content__author">by Wes Mckinney</div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description">Get complete instructions for manipulating, processing, cleaning, and crunching datasets in Python. Updated for Python 3.6, the second edition of this hands-on guide is packed with practical case studies that show you how to solve a broad set of data analysis problems effectively. You'll learn the latest versions of pandas, NumPy, IPython, and Jupyter in the process. Written by Wes McKinney, the creator of the Python pandas project, this book is a practical, modern introduction to data science tools in Python. It's ideal for analysts new to Python and for Python programmers new to data science and scientific computing. Data files and related material are available on GitHub...</div>
+			<a class="button-amazon" href="https://www.amazon.co.uk/dp/1491957662/" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+
+
+	<div class="book">
+		<a href="#" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/capital.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="#" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title"></h3></a>
+			<div class="book__content__author"></div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description"></div>
+			<a class="button-amazon" href="#" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+
+
+	<div class="book">
+		<a href="#" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/capital.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="#" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title"></h3></a>
+			<div class="book__content__author"></div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description"></div>
+			<a class="button-amazon" href="#" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+
+	<div class="book">
+		<a href="#" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/capital.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="#" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title"></h3></a>
+			<div class="book__content__author"></div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description"></div>
+			<a class="button-amazon" href="#" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+</div>
+
+
+
+<style type="text/css" media="screen">
+
+.content {
+	grid-template-columns: 1fr;
+}
+
+.content-right {
+	display: none;
+}
+
+</style>
+
+{% endblock content %}
+
+{% block content-right %}
+	{% include 'includes/content-right-adv01.html' %}
+{% endblock content-right %}
