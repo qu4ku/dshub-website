@@ -658,8 +658,9 @@ input[type=search] {
 /*------------------ BOOKS ------------------*/
 
 .books {
-	/* width: calc(100vw - 200px); */
-	/* max-width: 1200px; */
+	max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .books>h1 {
@@ -674,6 +675,8 @@ input[type=search] {
 	line-height: 36px;
 	/* font-weight: bold; */
 	margin-bottom: 30px;
+
+
 }
 
 .book {
@@ -688,7 +691,7 @@ input[type=search] {
 }
 
 .book__image img {
-	width: 100%
+	width: 100%;
 }
 
 .book__content__title {

@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
 class BookCategory(models.Model):
 	"""
 	BookCategory model. 
@@ -11,15 +11,13 @@ class BookCategory(models.Model):
 	class Meta:
 		verbose_name = 'Book Category'
 		verbose_name_plural = 'Book Categories'
-		db_table = 'book_category'
+		db_table = 'category'
 		ordering = ('title',)
 
 	# Do not turn it off once is on: seo
 	is_active = models.BooleanField(default=False)
 	title = models.CharField(max_length=200)
 	slug = models.SlugField(unique=True)
-	created = models.DateTimeField(auto_now_add=True)
-	updated = models.DateTimeField(auto_now=True)
 
 	# Used to generate subpage
 	headline = models.CharField(max_length=200, null=True, blank=True)
@@ -29,6 +27,8 @@ class BookCategory(models.Model):
 	seo_title = models.CharField(max_length=60, blank=True, null=True)
 	seo_description = models.CharField(max_length=165, blank=True, null=True)
 
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
 
 	def __str__(self):
 		return self.title
@@ -38,6 +38,7 @@ class BookCategory(models.Model):
 	
 
 class Book(models.Model):
+	""" Book model. """
 
 	class Meta:
 		verbose_name = 'Book'
@@ -54,13 +55,13 @@ class Book(models.Model):
 		max_length=250,
 		help_text='Url to amazon.',
 	)
+	categories = models.ManyToManyField(BookCategory, blank=True)
+	book_image = models.ImageField(upload_to='book-covers/', blank=True, null=True)
 
-	category = models.ManyToManyField(BookCategory, blank=True)
-	
 	is_active = models.BooleanField(
 		default=False,
 		help_text='Is it displayed on main page?')
-	
+
 	is_highlighted_category = models.BooleanField(
 		default=False,
 		help_text='Is it highlighted on main page?'
@@ -83,3 +84,17 @@ class Book(models.Model):
 
 	def __str__(self):
 		return self.title
+
+
+class AmazonReferralLink(models.Model):
+	"""
+	Amazon reference link model.
+	Will be used to generate full links in templates.
+	"""
+	amazon_referral_url = models.CharField(
+		max_length=200,
+		help_text='Referral part of the link only (without https://www.amazon.com/',
+	)
+
+	def __str__(self):
+		return self.amazon_referral_url
