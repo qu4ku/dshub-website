@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}The Best Data Science Books | DataScienceVault - All the books you need.{% endblock title %}
+
+{% block content %}		
+<div class="books">
+	<h1>{{ category.headline }}</h1>
+	<h2>{{ category.description }}</h2>	
+	<br><br>
+
+
+	{% for book in books %}
+	<div class="book">
+		<a href="{{ book.url }}" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{{ book.book_image.url }}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="{{ book.url }}" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title">{{ book.title }}</h3></a>
+			<div class="book__content__author">{{ book.author }}</div>
+			<div class="book__content__rating">Goodreads Rating: {{ book.rating_good_reads }}/5</div>
+			<div class="book__content__description">{{ book.description }}</div>
+			<a class="button-amazon" href="{{ book.url }}" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+	{% endfor %}
+
+</div>
+
+<style type="text/css" media="screen">
+
+.content {
+	grid-template-columns: 1fr;
+}
+
+.content-right {
+	display: none;
+}
+
+</style>
+
+{% endblock content %}
+
+{% block content-right %}
+	{% include 'includes/content-right-adv01.html' %}
+{% endblock content-right %}

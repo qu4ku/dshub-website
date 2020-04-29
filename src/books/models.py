@@ -56,11 +56,11 @@ class Book(models.Model):
 		help_text='Url to amazon.',
 	)
 	categories = models.ManyToManyField(BookCategory, blank=True)
-	book_image = models.ImageField(upload_to='book-covers/', blank=True, null=True)
+	book_image = models.ImageField(upload_to='book-covers/')
 
-	is_active = models.BooleanField(
+	is_active_category = models.BooleanField(
 		default=False,
-		help_text='Is it displayed on main page?')
+		help_text='Is it displayed on category page?')
 
 	is_highlighted_category = models.BooleanField(
 		default=False,
