@@ -741,3 +741,27 @@ input[type=search] {
 	background: #676767;
 	margin-bottom: 40px;
 }
+
+
+.categories {
+	background: #2b2b2b;
+	padding: 20px;
+	width: 100%;
+	margin-bottom: 40px;
+}
+
+.categories-title {
+	display: inline-block;
+	margin-right: 15px
+}
+
+.category {
+	display: inline-block;
+	margin-right: 15px;
+}
+
+/* .category::after {
+	content: "•";
+	display: inline-block;
+	margin: -10px 5px 0 0;
+} */

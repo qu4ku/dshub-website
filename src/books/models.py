@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class BookCategory(models.Model):
@@ -32,9 +33,9 @@ class BookCategory(models.Model):
 
 	def __str__(self):
 		return self.title
-	
-	# def get_absolute_url(self):
-	# 	return reverse("model_detail", kwargs={"pk": self.pk})
+
+	def get_absolute_url(self):
+		return reverse('book_category', kwargs={'slug': self.slug})
 	
 
 class Book(models.Model):

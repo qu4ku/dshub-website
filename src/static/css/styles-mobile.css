@@ -130,6 +130,12 @@ input[type=search] {
 	max-width: 240px;
 }
 
+.categories {
+	width: calc(100% - 40px);
+}
+
+
+
 
 }
 
