@@ -12,7 +12,7 @@
 	<div class="categories">
 		<h3 class="categories-title">Categories:</h3>
 		{% for category in categories %}
-			<a class="category" href="{{ category.get_absolute_url }}"><h3>{{ category.headline }}</h3></a>
+			<a class="category" href="{{ category.get_absolute_url }}"><h3>{{ category.title }}</h3></a>
 		{% endfor %}
 	</div>
 
@@ -22,7 +22,7 @@
 		<div class="book__content">
 			<a href="{{ book.url }}" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title">{{ book.title }}</h3></a>
 			<div class="book__content__author">{{ book.author }}</div>
-			<div class="book__content__rating">Goodreads Rating: {{ book.rating_good_reads }}/5</div>
+			<div class="book__content__rating">Goodreads Rating: {{ book.rating_goodreads }}/5</div>
 			<div class="book__content__description">{{ book.description }}</div>
 			<a class="button-amazon" href="{{ book.url }}" target="_blank" rel="noopener noreferrer">View on Amazon</a>
 		</div>

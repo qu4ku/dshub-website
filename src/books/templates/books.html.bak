@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}The Best Data Science Books | DataScienceVault - All the books you need.{% endblock title %}
+
+{% block content %}		
+<div class="books">
+	<h1>Selection of the Best Data Science Books</h1>
+	<h2>We aim to gather the best books about data science in one place. </h2>	
+	<br><br>
+
+
+	<div class="book">
+		<a href="https://www.amazon.co.uk/dp/149190142X/" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/data-science-from-scratch.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="https://www.amazon.co.uk/dp/149190142X/" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title">Data Science from Scratch: First Principles with Python</h3></a>
+			<div class="book__content__author">by Joel Grus</div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description">Data science libraries, frameworks, modules, and toolkits are great for doing data science, but they’re also a good way to dive into the discipline without actually understanding data science. In this book, you’ll learn how many of the most fundamental data science tools and algorithms work by implementing them from scratch.</div>
+			<a class="button-amazon" href="https://www.amazon.co.uk/dp/149190142X/" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+
+
+	<div class="book">
+		<a href="https://www.amazon.co.uk/dp/1449369413/" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/introdution-to-machine-learning-with-python.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="https://www.amazon.co.uk/dp/1449369413/" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title">Introduction to Machine Learning with Python: A Guide for Data Scientists</h3></a>
+			<div class="book__content__author">by Sarah Guido,  Andreas C. Mueller</div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description">Many Python developers are curious about what machine learning is and how it can be concretely applied to solve issues faced in businesses handling medium to large amount of data. Machine Learning with Python teaches you the basics of machine learning and provides a thorough hands-on understanding of the subject.</div>
+			<a class="button-amazon" href="https://www.amazon.co.uk/dp/1449369413/" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+
+
+	<div class="book">
+		<a href="https://www.amazon.co.uk/dp/1491957662/" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/python-for-data-science-analysis.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="https://www.amazon.co.uk/dp/1491957662/" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title">Python for Data Analysis</h3></a>
+			<div class="book__content__author">by Wes Mckinney</div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description">Get complete instructions for manipulating, processing, cleaning, and crunching datasets in Python. Updated for Python 3.6, the second edition of this hands-on guide is packed with practical case studies that show you how to solve a broad set of data analysis problems effectively. You'll learn the latest versions of pandas, NumPy, IPython, and Jupyter in the process. Written by Wes McKinney, the creator of the Python pandas project, this book is a practical, modern introduction to data science tools in Python. It's ideal for analysts new to Python and for Python programmers new to data science and scientific computing. Data files and related material are available on GitHub...</div>
+			<a class="button-amazon" href="https://www.amazon.co.uk/dp/1491957662/" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+
+
+	<div class="book">
+		<a href="https://www.amazon.co.uk/dp/1491912057/" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/python-data-science-handbook.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="https://www.amazon.co.uk/dp/1491912057/" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title">Python Data Science Handbook: Tools and Techniques for Developers</h3></a>
+			<div class="book__content__author">by Jake VanderPlas</div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description">The Python Data Science Handbook provides a reference to the breadth of computational and statistical methods that are central to data-intensive science, research, and discovery. People with a programming background who want to use Python effectively for data science tasks will learn how to face a variety of problems: e.g., how can I read this data format into my script? How can I manipulate, transform, and clean this data? How can I visualize this type of data? How can I use this data to gain insight, answer questions, or to build statistical or machine learning models?</div>
+			<a class="button-amazon" href="https://www.amazon.co.uk/dp/1491912057/" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+
+
+	<div class="book">
+		<a href="https://www.amazon.co.uk/dp/1789955750/" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/python-machine-learning-and-deep.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="https://www.amazon.co.uk/dp/1789955750/" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title">Python Machine Learning: Machine Learning and Deep Learning with Python, scikit-learn, and TensorFlow 2</h3></a>
+			<div class="book__content__author">by Sebastian Raschka, Vahid Mirjalili</div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description">Python Machine Learning, Third Edition is a comprehensive guide to machine learning and deep learning with Python. It acts as both a step-by-step tutorial, and a reference you'll keep coming back to as you build your machine learning systems. Packed with clear explanations, visualizations, and working examples, the book covers all the essential machine learning techniques in depth. While some books teach you only to follow instructions, with this machine learning book, Raschka and Mirjalili teach the principles behind machine learning, allowing you to build models and applications for yourself.</div>
+			<a class="button-amazon" href="https://www.amazon.co.uk/dp/1789955750/" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+
+	<div class="book">
+		<a href="https://www.amazon.co.uk/dp/1492032646/" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/hands-on-machine-learning.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="https://www.amazon.co.uk/dp/1492032646/" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title">Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems</h3></a>
+			<div class="book__content__author">by Aurelien Geron</div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description">Through a series of recent breakthroughs, deep learning has boosted the entire field of machine learning. Now, even programmers who know close to nothing about this technology can use simple, efficient tools to implement programs capable of learning from data. This practical book shows you how. By using concrete examples, minimal theory, and two production-ready Python frameworks-Scikit-Learn and TensorFlow-author Aurelien Geron helps you gain an intuitive understanding of the concepts and tools for building intelligent systems. You'll learn a range of techniques, starting with simple linear regression and progressing to deep neural networks. With exercises in each chapter to help you apply what you've learned, all you need is programming experience to get started.</div>
+			<a class="button-amazon" href="https://www.amazon.co.uk/dp/1492032646/" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+
+
+	<div class="book">
+		<a href="https://www.amazon.co.uk/dp/1492024333/" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/python-for-finance.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="https://www.amazon.co.uk/dp/1492024333/" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title">Python for Finance 2e: Mastering Data-Driven Finance</h3></a>
+			<div class="book__content__author">by Yves Hilpisch</div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description">The financial industry has recently adopted Python at a tremendous rate, with some of the largest investment banks and hedge funds using it to build core trading and risk management systems. Updated for Python 3, the second edition of this hands-on book helps you get started with the language, guiding developers and quantitative analysts through Python libraries and tools for building financial applications and interactive financial analytics. Using practical examples throughout the book, author Yves Hilpisch also shows you how to develop a full-fledged framework for Monte Carlo simulation-based derivatives and risk analytics, based on a large, realistic case study. Much of the book uses interactive IPython Notebooks</div>
+			<a class="button-amazon" href="https://www.amazon.co.uk/dp/1492024333/" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+
+
+	<div class="book">
+		<a href="https://www.amazon.co.uk/dp/1617294438/" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/deep-learning-with-python.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="https://www.amazon.co.uk/dp/1617294438/" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title">Deep Learning with Python</h3></a>
+			<div class="book__content__author">by Francois Chollet</div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description">Deep learning is applicable to a widening range of artificial intelligence problems, such as image classification, speech recognition, text classification, question answering, text-to-speech, and optical character recognition.</div>
+			<a class="button-amazon" href="https://www.amazon.co.uk/dp/1617294438/" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+
+
+	<div class="book">
+		<a href="https://www.amazon.co.uk/dp/0262035618/" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/deep-learning-fellow.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="https://www.amazon.co.uk/dp/0262035618/" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title">Deep Learning (Adaptive Computation and Machine Learning Series)</h3></a>
+			<div class="book__content__author">by Ian Goodfellow, Yoshua Bengio, Aaron Courville, Francis Bach</div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description">An introduction to a broad range of topics in deep learning, covering mathematical and conceptual background, deep learning techniques used in industry, and research perspectives. "Written by three experts in the field, Deep Learning is the only comprehensive book on the subject." -Elon Musk, cochair of OpenAI; cofounder and CEO of Tesla and SpaceX Deep learning is a form of machine learning that enables computers to learn from experience and understand the world in terms of a hierarchy of concepts. Because the computer gathers knowledge from experience, there is no need for a human computer operator to formally specify all the knowledge that the computer needs. The hierarchy of concepts allows the computer to learn complicated concepts by building them out of simpler ones; a graph of these hierarchies would be many layers deep...</div>
+			<a class="button-amazon" href="https://www.amazon.co.uk/dp/0262035618/" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+
+
+	<div class="book">
+		<a href="https://www.amazon.co.uk/dp/0262018020/" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/machine-learning-proba.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="https://www.amazon.co.uk/dp/0262018020/" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title">Machine Learning: A Probabilistic Perspective</h3></a>
+			<div class="book__content__author">by Kevin P. Murphy, Francis Bach</div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description">A comprehensive introduction to machine learning that uses probabilistic models and inference as a unifying approach. Today's Web-enabled deluge of electronic data calls for automated methods of data analysis. Machine learning provides these, developing methods that can automatically detect patterns in data and then use the uncovered patterns to predict future data. This textbook offers a comprehensive and self-contained introduction to the field of machine learning, based on a unified, probabilistic approach. The coverage combines breadth and depth, offering necessary background material on such topics as probability, optimization, and linear algebra as well as discussion of recent developments in the field, including conditional random fields, L1 regularization, and deep learning...</div>
+			<a class="button-amazon" href="https://www.amazon.co.uk/dp/0262018020/" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div>
+
+
+
+{% comment %} 
+	<div class="book">
+		<a href="#" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{% static 'img/books/capital.jpg' %}" alt="data science book cover"></a>
+		<div class="book__content">
+			<a href="#" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title"></h3></a>
+			<div class="book__content__author"></div>
+			<div class="book__content__rating">Goodreads Rating: na/5</div>
+			<div class="book__content__description"></div>
+			<a class="button-amazon" href="#" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+		</div>
+	</div>
+	<div class="book-separator"></div> {% endcomment %}
+
+
+
+</div>
+
+<style type="text/css" media="screen">
+
+.content {
+	grid-template-columns: 1fr;
+}
+
+.content-right {
+	display: none;
+}
+
+</style>
+
+{% endblock content %}
+
+{% block content-right %}
+	{% include 'includes/content-right-adv01.html' %}
+{% endblock content-right %}

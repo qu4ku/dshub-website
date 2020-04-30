@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}The Best Data Science Books | DataScienceVault - All the books you need.{% endblock title %}
+{% block title %}{{ category.title }} | DataScienceVault - All the books you need.{% endblock title %}
 
 {% block content %}		
 <div class="books">
@@ -10,9 +10,9 @@
 
 	<div class="categories">
 		<h3 class="categories-title">Categories:</h3>
-		<a class="category" href="{% url 'books' %}"><h3>Books Home</h3></a>
+		<a class="category" href="{% url 'books' %}"><h3>Selected Books</h3></a>
 		{% for category in categories %}
-			<a class="category" href="{{ category.get_absolute_url }}"><h3>{{ category.headline }}</h3></a>
+			<a class="category" href="{{ category.get_absolute_url }}"><h3>{{ category.title }}</h3></a>
 		{% endfor %}
 	</div>
 
@@ -22,8 +22,8 @@
 		<a href="{{ book.url }}" target="_blank" rel="noopener noreferrer"><img class="book__image" src="{{ book.book_image.url }}" alt="data science book cover"></a>
 		<div class="book__content">
 			<a href="{{ book.url }}" target="_blank" rel="noopener noreferrer"><h3 class="book__content__title">{{ book.title }}</h3></a>
-			<div class="book__content__author">{{ book.author }}</div>
-			<div class="book__content__rating">Goodreads Rating: {{ book.rating_good_reads }}/5</div>
+			<div class="book__content__author">Author: {{ book.author }}{% if book.publication_date %} ({{ book.get_publication_year }}){% endif %}</div>
+			<div class="book__content__rating">Goodreads Rating: {{ book.rating_goodreads }}/5</div>
 			<div class="book__content__description">{{ book.description }}</div>
 			<a class="button-amazon" href="{{ book.url }}" target="_blank" rel="noopener noreferrer">View on Amazon</a>
 		</div>
