@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ category.title }} | DataScienceVault - All the books you need.{% endblock title %}
+{% block title %} {% if category.seo_title %}{{ category.seo_title }} {% else %}{{ category.title }}{% endif %} | DataScienceVault - All the books you need.{% endblock title %}
 
 {% block content %}		
 <div class="books">
 	<h1>{{ category.headline }}</h1>
 	<h2>{{ category.description }}</h2>	
 
-	<div class="categories">
-		<h3 class="categories-title">Categories:</h3>
-		<a class="category" href="{% url 'books' %}"><h3>Selected Books</h3></a>
-		{% for category in categories %}
-			<a class="category" href="{{ category.get_absolute_url }}"><h3>{{ category.title }}</h3></a>
-		{% endfor %}
-	</div>
+	{% if categories %}
+		<div class="categories">
+			<h3 class="categories-title">Categories:</h3>
+			<a class="category" href="{% url 'books' %}"><h3>Selected Books</h3></a>
+			{% for category in categories %}
+				<a class="category" href="{{ category.get_absolute_url }}"><h3>{{ category.title }}</h3></a>
+			{% endfor %}
+		</div>
+	{% endif %}
 
 
 	{% for book in books %}
