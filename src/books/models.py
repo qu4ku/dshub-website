@@ -78,8 +78,8 @@ class Book(models.Model):
 	title = models.CharField(max_length=200)
 	author = models.CharField(max_length=200, null=True, blank=True)
 	publication_date = models.DateField(null=True, blank=True)
-	rating_goodreads = models.CharField(max_length=20, null=True, blank=True, default='NA')
-	rating_amazon = models.CharField(max_length=20, null=True, blank=True, default='NA')
+	rating_goodreads = models.CharField(max_length=20, null=True, blank=True)
+	rating_amazon = models.CharField(max_length=20, null=True, blank=True)
 	url_goodreads = models.URLField(
 		max_length=250,
 		help_text='Url to goodreads.',
