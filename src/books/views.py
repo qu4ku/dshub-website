@@ -14,8 +14,10 @@ def books_view(request):
 def books_view(request):
 	template = 'books.html'
 
-	books = Book.objects.filter(is_active_main=True)
+	books = Book.objects.filter(is_active_main=True) \
+		.order_by('-is_highlighted_main', 'title')
 	categories = BookCategory.objects.filter(is_active=True)
+
 	
 	context = {
 		'books': books,
@@ -28,8 +30,11 @@ def books_view(request):
 def book_category_view(request, slug):
 	template = 'book-category.html'
 
-	category_obj = get_object_or_404(BookCategory, slug=slug, is_active=True)
-	books = Book.objects.filter(categories=category_obj, is_active_category=True)
+	category_obj = get_object_or_404(BookCategory, slug=slug, is_active=True) 
+	books = Book.objects \
+		.filter(categories=category_obj, is_active_category=True) \
+		.order_by('-is_highlighted_category', 'title')
+
 
 	categories = BookCategory.objects.filter(is_active=True).exclude(slug=category_obj.slug)
 	

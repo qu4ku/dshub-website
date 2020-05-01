@@ -73,7 +73,7 @@ class Book(models.Model):
 		verbose_name = 'Book'
 		verbose_name_plural = 'Books'
 		db_table = 'book'
-		ordering = ('is_highlighted_category', 'title',)
+		ordering = ('title',)
 
 	title = models.CharField(max_length=200)
 	author = models.CharField(max_length=200, null=True, blank=True)

@@ -16,6 +16,11 @@
 				<a class="category" href="{{ category.get_absolute_url }}"><h3>{{ category.title }}</h3></a>
 			{% endfor %}
 		</div>
+	{% else %}
+		<div class="categories">
+			<h3 class="categories-title">See:</h3>
+			<a class="category" href="{% url 'books' %}"><h3>Selected Books</h3></a>
+		</div>
 	{% endif %}
 
 
