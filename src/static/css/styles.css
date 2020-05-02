@@ -765,3 +765,14 @@ input[type=search] {
 	display: inline-block;
 	margin: -10px 5px 0 0;
 } */
+
+
+/*------------------ 404 ------------------*/
+
+.error404 .subpage-header {
+	font-size: 70px;
+}
+
+.error404 p {
+	margin-bottom:30px;
+}

@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.shortcuts import render, get_object_or_404, get_list_or_404
+from django.shortcuts import render, get_object_or_404, get_list_or_404, render_to_response
 from django.utils.dateparse import parse_date
 from django.utils.text import slugify
 
@@ -146,3 +146,11 @@ def search_view(request):
 	}
 
 	return render(request, template, context)
+
+
+def handler404_view(request, exception):
+	template = '404.html'
+	response = render_to_response(template)
+	response.status_code = 404
+	return response
+	

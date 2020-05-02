@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}DataScienceVault - All the data you need.{% endblock title %}
+
+{% block content %}		
+<div class="error404">
+	<h2 class="subpage-header">404</h2>	
+	<p>Sorry, we can't find that page!</p>
+	<a href="{% url 'home' %}" class="button-standard">Home Page</a>
+	<br><br>
+</div>
+{% endblock content %}
+
+{% block content-right %}
+	{% include 'includes/content-right-adv01.html' %}
+{% endblock content-right %}

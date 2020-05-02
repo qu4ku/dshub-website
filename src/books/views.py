@@ -49,6 +49,5 @@ def book_category_view(request, slug):
 		# The case when the category is active but no books found
 		return HttpResponseRedirect(reverse('books'))
 
-	
 
 
