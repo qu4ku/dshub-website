@@ -770,9 +770,11 @@ input[type=search] {
 /*------------------ 404 ------------------*/
 
 .error404 .subpage-header {
-	font-size: 70px;
+    font-size: 120px;
+    font-weight: bold;
+    margin-bottom: 0;
 }
 
 .error404 p {
-	margin-bottom:30px;
+	margin-bottom: 30px;
 }
