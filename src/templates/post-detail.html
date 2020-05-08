@@ -5,62 +5,67 @@
 
 {% block content %}		
 
-<div class="posts">
+<div class="content">
 
-	<div class="post"> <!-- post-start -->
-		<a href="{{ post.source_url }}" target="_blank" rel="nofollow"><div class="post__header">{{ post.title }}</div></a>
-		<div class="post__original-source">( go to the article → <a href="{{ post.source_url }}" target="_blank" rel="nofollow">{{ post.source_url }}</a> )</div>
-		<div class="post__body">{{ post.content }}</div>
-		<div class="post__info">
+	<div class="posts">
 
-			{% include 'includes/social.html' %}
-			
-			<div class="post__info__source"><a href="{{ post.feed.url }}" rel="nofollow">{{ post.feed.url_display }}</a></div>
-			<div class="post__info__date">
-				<div>{{ post.date }}</div>
-			</div>
-		</div>
-		<div class="post__line"></div>
-		{% if tags %}
-			<div class="categories">
-				<div class="categories__header">You may be interested in:</div>
-				{% for tag, posts in tags.items %}
+		<div class="post"> <!-- post-start -->
+			<a href="{{ post.source_url }}" target="_blank" rel="nofollow"><div class="post__header">{{ post.title }}</div></a>
+			<div class="post__original-source">( go to the article → <a href="{{ post.source_url }}" target="_blank" rel="nofollow">{{ post.source_url }}</a> )</div>
+			<div class="post__body">{{ post.content }}</div>
+			<div class="post__info">
 
-				<div class="categories__title">Newest in: <a class="link-standard" href="{% url 'tag' slug=tag.slug %}">{{ tag.title }}</a></div>
-					{% for post in posts %}
-						<p><a class="link-detail-post" href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
-					{% endfor %}
-				-
+				{% include 'includes/social.html' %}
 				
-				{% endfor %}
+				<div class="post__info__source"><a href="{{ post.feed.url }}" rel="nofollow">{{ post.feed.url_display }}</a></div>
+				<div class="post__info__date">
+					<div>{{ post.date }}</div>
+				</div>
 			</div>
 			<div class="post__line"></div>
-		{% endif %}
-	</div> <!-- end-post -->
+			{% if tags %}
+				<div class="categories">
+					<div class="categories__header">You may be interested in:</div>
+					{% for tag, posts in tags.items %}
+
+					<div class="categories__title">Newest in: <a class="link-standard" href="{% url 'tag' slug=tag.slug %}">{{ tag.title }}</a></div>
+						{% for post in posts %}
+							<p><a class="link-detail-post" href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
+						{% endfor %}
+					-
+					
+					{% endfor %}
+				</div>
+				<div class="post__line"></div>
+			{% endif %}
+		</div> <!-- end-post -->
 
 
-	<!-- {% include 'includes/pagination.html' %} -->
-	<a class="button-standard" href="" onclick="if (document.referrer.indexOf(window.location.host) !== -1) { history.go(-1); return false; } else { window.location.href = '/'; }">Back</a>
+		<a class="button-standard" href="" onclick="if (document.referrer.indexOf(window.location.host) !== -1) { history.go(-1); return false; } else { window.location.href = '/'; }">Back</a>
 
-	{% include 'includes/horizontal-adv-01.html' %}
+		{% include 'includes/horizontal-adv-01.html' %}
 
-	<div id="disqus_thread"></div>
-		<script>
-			var disqus_config = function () {
-				this.page.url = '{{ post.get_url_for_social }}';  
-				this.page.identifier = '{{ post.slug }}'; 
-				this.disqus_title = '{{ post.title }}';
-				 
-			};
+		<div id="disqus_thread"></div>
+			<script>
+				var disqus_config = function () {
+					this.page.url = '{{ post.get_url_for_social }}';  
+					this.page.identifier = '{{ post.slug }}'; 
+					this.disqus_title = '{{ post.title }}';
+					
+				};
 
-			(function() {
-				var d = document, s = d.createElement('script');
-				s.src = 'https://data-science-vault.disqus.com/embed.js';
-				s.setAttribute('data-timestamp', +new Date());
-				(d.head || d.body).appendChild(s);
-			})();
-		</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+				(function() {
+					var d = document, s = d.createElement('script');
+					s.src = 'https://data-science-vault.disqus.com/embed.js';
+					s.setAttribute('data-timestamp', +new Date());
+					(d.head || d.body).appendChild(s);
+				})();
+			</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+	</div>
+
+
 
 </div>
 
@@ -68,8 +73,5 @@
 		
 {% endblock content %}
 
-{% block right %}
-	{% include 'includes/content-right-tags.html' %}
-{% endblock right %}
 
 

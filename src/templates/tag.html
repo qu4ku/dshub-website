@@ -3,33 +3,36 @@
 
 {% block title %}{{ tag.title }} | DataScienceVault - All the data you need.{% endblock title %}
 
-{% block content %}		
-<div class="posts">
-	<h2 class="search-header">Tag: <span>{{ tag }}</span></h2>	
-	{% for post in posts %}
-	<div class="post"> <!-- post-start -->
-		<a href="{{ post.source_url }}" target="_blank" rel="nofollow"><div class="post__header">{{ post.title }}</div></a>
-		<div class="post__body">{{ post.content|truncatewords:50 }}</div>
-		<div class="post__info">
+{% block content %}	
 
-			{% include 'includes/social.html' %}
-			
-			<div class="post__info__source"><a href="{{ post.feed.url }}" rel="nofollow">{{ post.feed.url_display }}</a></div>
-			<div class="post__info__date">
-				<a class="comments" href="{{ post.get_absolute_url }}#disqus_thread">Comments</a>				
-				<div>{{ post.date }}</div>
+<div class="content">
+	<div class="posts">
+		<h2 class="search-header">Tag: <span>{{ tag }}</span></h2>	
+		{% for post in posts %}
+		<div class="post"> <!-- post-start -->
+			<a href="{{ post.source_url }}" target="_blank" rel="nofollow"><div class="post__header">{{ post.title }}</div></a>
+			<div class="post__body">{{ post.content|truncatewords:50 }}</div>
+			<div class="post__info">
+
+				{% include 'includes/social.html' %}
+				
+				<div class="post__info__source"><a href="{{ post.feed.url }}" rel="nofollow">{{ post.feed.url_display }}</a></div>
+				<div class="post__info__date">
+					<a class="comments" href="{{ post.get_absolute_url }}#disqus_thread">Comments</a>				
+					<div>{{ post.date }}</div>
+				</div>
 			</div>
-		</div>
-		<div class="post__line"></div>
-	</div> <!-- end-post -->
-	{% endfor %}
+			<div class="post__line"></div>
+		</div> <!-- end-post -->
+		{% endfor %}
 
-	{% include 'includes/pagination.html' %}
-</div>
+		{% include 'includes/pagination.html' %}
+	</div>
+
+	<div class="content-right">
+		{% include 'includes/content-right-adv01.html' %}
+	</div>
+</div>	
 		
 {% endblock content %}
 
-{% block content-right %}
-	{% include 'includes/content-right-adv01.html' %}
-	<!-- {% include 'includes/content-right-tags.html' %} -->
-{% endblock content-right %}

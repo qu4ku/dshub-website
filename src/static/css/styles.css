@@ -420,7 +420,7 @@ input[type=search] {
 
 .horizontal__adv {
 	margin-top: 25px;
-
+	max-width: 100%;
 }
 
 
@@ -656,6 +656,18 @@ input[type=search] {
 
 
 /*------------------ BOOKS ------------------*/
+
+.content-books {
+	/* padding: 50px;
+	grid-area: content;
+	display: grid;
+	grid-column-gap: 50px; */
+	grid-template-columns: 1fr;
+	/* grid-template-areas: "content-content content-right";
+	justify-content: center;
+	background: var(--bg-dark);
+	margin-bottom: 50px; */
+}
 
 .books {
 	max-width: 1200px;
