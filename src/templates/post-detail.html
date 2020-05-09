@@ -40,8 +40,28 @@
 			{% endif %}
 		</div> <!-- end-post -->
 
+		<div class="post__nav">
+			<a class="button-standard" href="" onclick="if (document.referrer.indexOf(window.location.host) !== -1) { history.go(-1); return false; } else { window.location.href = '/'; }">Back</a>
+			<a class="button-standard" href="{% url 'home' %}">All Articles</a>
+		</div>
 
-		<a class="button-standard" href="" onclick="if (document.referrer.indexOf(window.location.host) !== -1) { history.go(-1); return false; } else { window.location.href = '/'; }">Back</a>
+		<div class="post__line"></div>
+
+		<!-- Book Selections -->
+		{% if book_categories %}
+			<div class="book-categories">
+				<h3 class="book-categories-title">Our Books Selections:</h3>
+				<a class="book-category" href="{% url 'books' %}"><h3>Selected Books</h3></a>
+				{% for category in book_categories %}
+					<a class="book-category" href="{{ category.get_absolute_url }}"><h3>{{ category.title }}</h3></a>
+				{% endfor %}
+			</div>
+		{% else %}
+			<div class="book-categories">
+				<h3 class="book-categories-title">Our Book Selections:</h3>
+				<a class="book-category" href="{% url 'books' %}"><h3>Selected Books</h3></a>
+			</div>
+		{% endif %}
 
 		{% include 'includes/horizontal-adv-01.html' %}
 

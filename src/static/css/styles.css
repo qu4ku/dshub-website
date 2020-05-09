@@ -380,6 +380,14 @@ input[type=search] {
 	margin-bottom: 20px;
 }
 
+.post__nav {
+	margin-bottom: 20px;
+}
+
+.post__nav a {
+	margin-right: 10px;
+}
+
 /*------------------ CONTENT-RIGHT ------------------*/
 
 .content-right{
@@ -755,19 +763,19 @@ input[type=search] {
 }
 
 
-.categories {
+.book-categories {
 	background: #2b2b2b;
 	padding: 20px;
 	width: 100%;
 	margin-bottom: 40px;
 }
 
-.categories-title {
+.book-categories-title {
 	display: inline-block;
 	margin-right: 15px
 }
 
-.category {
+.book-category {
 	display: inline-block;
 	margin-right: 15px;
 }

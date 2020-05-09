@@ -6,6 +6,7 @@ from django.utils.dateparse import parse_date
 from django.utils.text import slugify
 
 from .models import Post, Feed, Tag, OtherTag
+from books.models import BookCategory
 
 
 def generate_top_tags(cap=20):
@@ -69,9 +70,13 @@ def post_detail_view(request, slug):
 	for tag in tags:
 		top_posts = Post.objects.all().filter(tags=tag)[:post_cap]
 		tags_dict[tag] = top_posts
+	
+	book_categories = BookCategory.objects.filter(is_active=True)
+	
 	context = {
 		'post': post,
 		'tags': tags_dict,
+		'book_categories': book_categories,
 	}
 
 	return render(request, template, context)
