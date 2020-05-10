@@ -764,8 +764,8 @@ input[type=search] {
 
 
 .book-categories {
-	background: #2b2b2b;
-	padding: 20px;
+	/* background: #2b2b2b; */
+	padding: 20 0px;
 	width: 100%;
 	margin-bottom: 40px;
 }
@@ -777,13 +777,33 @@ input[type=search] {
 
 .book-category {
 	display: inline-block;
-	margin-right: 15px;
+	margin-right: 5px;
+
+	font-size: 12px;
+	color: grey; 
+	background: #2b2b2b;
+
+	border-radius: 20px;
+	padding: 10px 12px 10px 12px;
 }
 
-/* .category::after {
-	content: "•";
+.book-category:hover {
+	color: var(--secondary-color);
+	color: white;
+	text-decoration: none;
+	background-color: #444444;
+}
+
+/* .book-categories-post {
+	background: #2b2b2b;
+	padding: 20px;
+	width: 100%;
+	margin-bottom: 40px;
+}
+
+.book-category-post {
 	display: inline-block;
-	margin: -10px 5px 0 0;
+	margin-right: 15px;
 } */
 
 

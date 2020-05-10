@@ -13,7 +13,7 @@
 			<div class="book-categories">
 				<h3 class="book-categories-title">Categories:</h3>
 				{% for category in book_categories %}
-					<a class="book-category" href="{{ category.get_absolute_url }}"><h3>{{ category.title }}</h3></a>
+					<a class="book-category" href="{{ category.get_absolute_url }}"><div>{{ category.title }}</div></a>
 				{% endfor %}
 			</div>
 		{% endif %}

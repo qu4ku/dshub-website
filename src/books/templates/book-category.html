@@ -15,13 +15,13 @@
 				<h3 class="book-categories-title">Categories:</h3>
 				<a class="book-category" href="{% url 'books' %}"><h3>Selected Books</h3></a>
 				{% for category in book_categories %}
-					<a class="book-category" href="{{ category.get_absolute_url }}"><h3>{{ category.title }}</h3></a>
+					<a class="book-category" href="{{ category.get_absolute_url }}"><div>{{ category.title }}</div></a>
 				{% endfor %}
 			</div>
 		{% else %}
 			<div class="book-categories">
 				<h3 class="book-categories-title">See:</h3>
-				<a class="book-category" href="{% url 'books' %}"><h3>Selected Books</h3></a>
+				<a class="book-category" href="{% url 'books' %}"><div>Selected Books</div></a>
 			</div>
 		{% endif %}
 
