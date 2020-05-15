@@ -7,6 +7,18 @@
 
 <div class="content content-books">
 	<div class="books">
+
+		<div class="breadcrumbs">
+			<ul>
+				<li><a href="{% url 'home' %}">Home</a></li>
+				<span> → </span>
+				<li><a href="{% url 'books' %}">Selected Books</a></li>
+				<span> → </span>
+				<li>{{ book_category.title }}</li>
+
+			</ul>
+		</div>
+		
 		<h1>{{ book_category.headline }}</h1>
 		<h2>{{ book_category.description }}</h2>	
 

@@ -8,6 +8,14 @@
 <div class="content">
 
 	<div class="posts">
+	
+		<div class="breadcrumbs">
+			<ul>
+				<li><a href="{% url 'home' %}">Home</a></li>
+				<span> → </span>
+				<li>Post</li>
+			</ul>
+		</div>
 
 		<div class="post"> <!-- post-start -->
 			<a href="{{ post.source_url }}" target="_blank" rel="nofollow"><div class="post__header">{{ post.title }}</div></a>

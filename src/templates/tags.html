@@ -7,6 +7,13 @@
 {% block content %}		
 <div class="content">
 	<div class="about">
+		<div class="breadcrumbs">
+			<ul>
+				<li><a href="{% url 'home' %}">Home</a></li>
+				<span> → </span>
+				<li>Tags</li>
+			</ul>
+		</div>
 		<h2 class="subpage-header">Tags</h2>	
 		{% for tag in tags %}
 			<a class="button-tag" href="{% url 'tag' slug=tag.0 %}">{{ tag.0 }}<span>{{ tag.1 }}</span></a>
